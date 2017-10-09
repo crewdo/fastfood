@@ -1,3 +1,7 @@
-.logo h1 a{
-    color: #ff590f;
+.trend-info{
+    background: #fd4a3b;
+}
+#toTop .fa-arrow-up{
+background-color: red;
+color: white;
 }
