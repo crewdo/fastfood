@@ -1,0 +1,73 @@
+.banner-right{
+	background:#fff808;
+}
+.intro-banner{
+	font-size: 50px;
+	color: black;
+	font-family: 'Pompiere', cursive;
+	text-align: center;
+}
+.cd-search input{
+	background: #ff2f21;
+}
+.breadcrumbs{
+    background: #f94236;
+}
+.breadcrumb1 li a{
+	color: #f9d100;
+}
+.breadcrumb1 li span{
+	    color: #f9d100;
+}
+.address input[type="submit"]{
+	    background: #ffb821;
+    border: solid 1px #ffb821;
+}
+.new-text ul li a:hover{
+/*	color: #dcd9d9;
+    border-color: ##dcd9d9;*/
+}
+
+.trend-slider h5, .trend-slider h4{
+	color: yellow;
+}
+.flex-control-paging li a{
+	background:white;
+}
+.flex-control-paging li a.flex-active
+{
+	background-color: black;
+}
+.cd-header-buttons {
+	top: -50px;
+    right: 0;
+}
+
+.rating{
+	float: none;
+	text-align: left;
+	
+}
+.intro-banner{
+	font-family: 'Comfortaa';
+}
+ul#example li{
+	border: 3px solid rgb(239, 255, 0);
+}
+.slides{
+	color: #f94236;
+}
+.faq > li > a{
+	color: black;
+}
+.new-add h5{
+	color: white;
+	font-family: 'Comfortaa';
+	font-size: 0px;
+}
+.address-info{
+	background: rgba(0, 0, 0, 0.6);
+}
+.address-grid{
+	background: rgba(0, 0, 0, 0.6);
+}
