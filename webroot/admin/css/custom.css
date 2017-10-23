@@ -1,0 +1,15 @@
+.site-header .navbar-brand .logo{
+    background: url(../img/favicon.ico) no-repeat !important;
+    width: 25px;
+    background-size: cover;
+    display: inline-block;
+}
+.site-title{
+	color: white;
+	vertical-align: middle;
+	display: inline-block;
+	position: relative;
+    top: 10%;
+    transform: translate(0, -50%);
+
+}

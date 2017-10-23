@@ -4,7 +4,13 @@
  * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+ <h4><?= __('Users') ?></h4>
+<ol class="breadcrumb no-bg mb-1">
+<li class="breadcrumb-item"><a href="skins.html#">Home</a></li>
+<li class="breadcrumb-item active"><?= __('Users') ?></li>
+</ol>
+<div class="box box-block bg-white">
+    <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
@@ -50,4 +56,6 @@
         </ul>
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
+</div>
+
 </div>

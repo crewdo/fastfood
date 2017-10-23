@@ -24,7 +24,7 @@ class UsersController extends AppController
 
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
-       $this->viewBuilder()->layout('public/public');
+       $this->viewBuilder()->layout('admin/admin');
     }
     /**
      * View method
