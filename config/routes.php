@@ -48,8 +48,8 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
     $routes->fallbacks(DashedRoute::class);
 });
-Router::scope('/admin', function ($routes) {
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+Router::scope('admin', function ($routes) {
+    $routes->connect('/', ['controller' => 'Admin', 'action' => 'index']);
     $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
     $routes->connect('/users/view/*&*', ['controller' => 'Users', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);

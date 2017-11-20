@@ -1,15 +1,20 @@
 .site-header .navbar-brand .logo{
-    background: url(../img/favicon.ico) no-repeat !important;
+    background: none !important;
     width: 25px;
     background-size: cover;
     display: inline-block;
 }
 .site-title{
 	color: white;
-	vertical-align: middle;
+	vertical-align: bottom;
 	display: inline-block;
 	position: relative;
-    top: 10%;
-    transform: translate(0, -50%);
-
+/*    top: 10%;
+    transform: translate(0, -50%);*/
 }
+@media screen and (max-width: 991px) and (min-width: 768px){
+    .site-title{
+        font-size: 13px;
+    }
+}
+
