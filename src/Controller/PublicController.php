@@ -20,14 +20,18 @@ class PublicController extends AppController
      */
     public function index()
     {
-        $products = $this->paginate($this->Users);
-        $head_banner = $this->paginate($this->HeadBanners);
-        $foot_banner = $this->paginate($this->FootBanners);
-        $infomations = $this->paginate($this->Infomations);
+        $this->loadModel('Products');
+        $this->viewBuilder()->layout('public/public');
+        $products = $this->paginate($this->Products);
         $this->set(compact('products'));
-        $this->set(compact('head_banner'));
-        $this->set(compact('foot_banner'));
-        $this->set(compact('infomations'));
+        // $head_banner = $this->paginate($this->HeadBanners);
+        // $foot_banner = $this->paginate($this->FootBanners);
+        // $infomations = $this->paginate($this->Infomations);
+        
+        // $this->set(compact('head_banner'));
+        // $this->set(compact('foot_banner'));
+        // $this->set(compact('infomations'));
+
     }
 
     /**
