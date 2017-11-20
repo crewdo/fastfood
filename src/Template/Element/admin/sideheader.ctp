@@ -2,7 +2,9 @@
 				<nav class="navbar navbar-light">
 							<div class="navbar-left">
 						<a class="navbar-brand" href="index.html">
-							<div class="logo"></div>
+							<div class="logo">
+								<img src="img/favicon.ico" class="img-reponsive" width="100%">
+							</div>
 							<span class="site-title">Fastfoody</span>
 						</a>
 						<div class="toggle-button dark sidebar-toggle-first float-xs-left hidden-md-up">
