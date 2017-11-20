@@ -24,8 +24,8 @@ class UsersController extends AppController
 
         $this->set(compact('users'));
         $this->set('_serialize', ['users']);
-       $this->viewBuilder()->layout('admin/admin');
     }
+
     /**
      * View method
      *
@@ -33,7 +33,7 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|void
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function view($id = null, $name= null)
+    public function view($id = null)
     {
         $user = $this->Users->get($id, [
             'contain' => []
@@ -87,7 +87,6 @@ class UsersController extends AppController
         }
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
-           $this->viewBuilder()->layout('admin/admin');
     }
 
     /**
