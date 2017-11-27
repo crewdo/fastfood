@@ -31,7 +31,7 @@
                 <th scope="col"><?= $this->Paginator->sort('special') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('review_number') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('review') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('image_list_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('image_list') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -42,7 +42,7 @@
             <tr>
                 <td><?= $this->Number->format($product->id) ?></td>
                 <td><?= $product->has('products_category') ? $this->Html->link($product->products_category->name, ['controller' => 'ProductsCategories', 'action' => 'view', $product->products_category->id]) : '' ?></td>
-                <td><?= $this->Number->format($product->status) ?></td>
+                <td><?= h($product->status) ?></td>
                 <td><?= h($product->name) ?></td>
                 <td><?= $this->Number->format($product->price) ?></td>
                 <td><?= h($product->unit) ?></td>
@@ -52,7 +52,7 @@
                 <td><?= $this->Number->format($product->special) ?></td>
                 <td><?= $this->Number->format($product->review_number) ?></td>
                 <td><?= $this->Number->format($product->review) ?></td>
-                <td><?= h($product->image_list_id) ?></td>
+                <td><?= h($product->image_list) ?></td>
                 <td><?= h($product->created) ?></td>
                 <td><?= h($product->modified) ?></td>
                 <td class="actions">

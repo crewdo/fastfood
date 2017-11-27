@@ -35,7 +35,7 @@
             echo $this->Form->control('special');
             echo $this->Form->control('review_number');
             echo $this->Form->control('review');
-            echo $this->Form->control('image_list_id');
+            echo $this->Form->control('image_list');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

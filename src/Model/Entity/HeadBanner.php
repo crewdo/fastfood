@@ -11,7 +11,6 @@ use Cake\ORM\Entity;
  * @property string $title_nd
  * @property \Cake\I18n\FrozenTime $start_special_date
  * @property \Cake\I18n\FrozenTime $end__special_date
- * @property string $image_list_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
@@ -34,9 +33,8 @@ class HeadBanner extends Entity
         'title_nd' => true,
         'start_special_date' => true,
         'end__special_date' => true,
-        'image_list_id' => true,
+        'image_list' => true,
         'created' => true,
-        'modified' => true,
-        'image_list' => true
+        'modified' => true
     ];
 }

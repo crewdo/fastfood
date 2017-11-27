@@ -8,7 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $category_id
- * @property int $status
+ * @property string $status
  * @property string $name
  * @property float $price
  * @property string $unit
@@ -18,12 +18,11 @@ use Cake\ORM\Entity;
  * @property int $special
  * @property int $review_number
  * @property float $review
- * @property string $image_list_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \App\Model\Entity\ProductsCategory $products_category
  * @property \App\Model\Entity\ImageList $image_list
+ * @property \App\Model\Entity\ProductsCategory $products_category
  * @property \App\Model\Entity\OrdersDetail[] $orders_details
  */
 class Product extends Entity
@@ -50,11 +49,10 @@ class Product extends Entity
         'special' => true,
         'review_number' => true,
         'review' => true,
-        'image_list_id' => true,
+        'image_list' => true,
         'created' => true,
         'modified' => true,
         'products_category' => true,
-        'image_list' => true,
         'orders_details' => true
     ];
 }

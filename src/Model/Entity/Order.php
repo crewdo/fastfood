@@ -8,9 +8,11 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $customer_id
- * @property int $status
- * @property float $money
+ * @property string $status
  * @property string $message
+ * @property string $address
+ * @property \Cake\I18n\FrozenTime $ship_time
+ * @property float $total
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
@@ -31,8 +33,10 @@ class Order extends Entity
     protected $_accessible = [
         'customer_id' => true,
         'status' => true,
-        'money' => true,
         'message' => true,
+        'address' => true,
+        'ship_time' => true,
+        'total' => true,
         'created' => true,
         'modified' => true,
         'customer' => true

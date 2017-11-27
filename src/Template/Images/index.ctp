@@ -4,59 +4,6 @@
  * @var \App\Model\Entity\Image[]|\Cake\Collection\CollectionInterface $images
  */
 ?>
-      <!-- Content -->
-                <div class="content-area py-1">
-                    <div class="container-fluid">
-                        <h4>Data Tables</h4>
-                        <ol class="breadcrumb no-bg mb-1">
-                            <li class="breadcrumb-item"><a href="tables-datatable.html#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="tables-datatable.html#">Tables</a></li>
-                            <li class="breadcrumb-item active">Data Tables</li>
-                        </ol>
-                        <div class="box box-block bg-white">
-                            <h5 class="mb-1">Default Table</h5>
-                            <table class="table table-striped table-bordered dataTable" id="table-1">
-                                <thead>
-                        <tr>
-                        <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('link') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                        <th scope="col" class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                                </thead>
-                                  <tbody>
-            <?php foreach ($images as $image): ?>
-            <tr>
-                <td><?= $this->Number->format($image->id) ?></td>
-                <td><?= h($image->link) ?></td>
-                <td><?= h($image->created) ?></td>
-                <td><?= h($image->modified) ?></td>
-                <td class="actions" style="width: 70px;">
-                 <!--      <a href=""><i class="fa fa-pencil edit-icon"></i></a>
-                         <a href=""><i class="fa fa-trash delete-icon"></i></a> -->
-                 <?= $this->Html->link(
-                            $this->Html->tag('i','&nbsp',array('class'=>'fa fa-pencil edit-icon')),
-                             array(
-                            'controller'=>'Images', 'action'=>'edit'),
-                            array('class'=>'','id'=>'', 'escape' => false)
-                            ) ?>
-                   <?= $this->Html->link(
-                            $this->Html->tag('i','&nbsp',array('class'=>'fa fa-pencil delete-icon')),
-                             array(
-                            'controller'=>'Images', 'action'=>'delete'),
-                            array('class'=>'','id'=>'', 'escape' => false)
-                            ) ?>
-
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>

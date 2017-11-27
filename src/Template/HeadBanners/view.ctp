@@ -25,8 +25,8 @@
             <td><?= h($headBanner->title_nd) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Image List Id') ?></th>
-            <td><?= h($headBanner->image_list_id) ?></td>
+            <th scope="row"><?= __('Image List') ?></th>
+            <td><?= h($headBanner->image_list) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>

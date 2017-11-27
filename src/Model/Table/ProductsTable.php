@@ -10,7 +10,6 @@ use Cake\Validation\Validator;
  * Products Model
  *
  * @property \App\Model\Table\ProductsCategoriesTable|\Cake\ORM\Association\BelongsTo $ProductsCategories
- * @property \App\Model\Table\ImageListsTable|\Cake\ORM\Association\BelongsTo $ImageLists
  * @property \App\Model\Table\OrdersDetailsTable|\Cake\ORM\Association\HasMany $OrdersDetails
  *
  * @method \App\Model\Entity\Product get($primaryKey, $options = [])
@@ -46,10 +45,6 @@ class ProductsTable extends Table
             'foreignKey' => 'category_id',
             'joinType' => 'INNER'
         ]);
-        $this->belongsTo('ImageLists', [
-            'foreignKey' => 'image_list_id',
-            'joinType' => 'INNER'
-        ]);
         $this->hasMany('OrdersDetails', [
             'foreignKey' => 'product_id'
         ]);
@@ -68,6 +63,7 @@ class ProductsTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->scalar('status')
             ->requirePresence('status', 'create')
             ->notEmpty('status');
 
@@ -114,6 +110,11 @@ class ProductsTable extends Table
             ->requirePresence('review', 'create')
             ->notEmpty('review');
 
+        $validator
+            ->scalar('image_list')
+            ->requirePresence('image_list', 'create')
+            ->notEmpty('image_list');
+
         return $validator;
     }
 
@@ -127,7 +128,6 @@ class ProductsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['category_id'], 'ProductsCategories'));
-        $rules->add($rules->existsIn(['image_list_id'], 'ImageLists'));
 
         return $rules;
     }
