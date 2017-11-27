@@ -21,7 +21,7 @@ class ImagesController extends AppController
     public function index()
     {
         $images = $this->paginate($this->Images);
-
+        $this->viewBuilder()->layout('admin/admin');
         $this->set(compact('images'));
         $this->set('_serialize', ['images']);
     }
@@ -38,7 +38,6 @@ class ImagesController extends AppController
         $image = $this->Images->get($id, [
             'contain' => ['FootBanners']
         ]);
-
         $this->set('image', $image);
         $this->set('_serialize', ['image']);
     }

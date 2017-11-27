@@ -15,21 +15,22 @@
 								<span class="s-text">Media</span>
 							</a>
 							<ul>
-								<li><a href="#">Library</a></li>
+								<li><a href="admin/media">Library</a></li>
 								<li><a href="#">Add new</a></li>
 							</ul>
 						</li>
-						<li>
+						<li  class="with-sub">
 							<a href="#" class="waves-effect  waves-light">
+								<span class="s-caret"><i class="fa fa-angle-down"></i></span>
 								<span class="s-icon"><i class="ti-layout-tab"></i></span>
-								<span class="s-text">Header Banner</span>
+								<span class="s-text">Home page</span>
 							</a>
-						</li>
-						<li>
-							<a href="#" class="waves-effect  waves-light">
-								<span class="s-icon"><i class="ti-palette"></i></span>
-								<span class="s-text">Footer Banner</span>
-							</a>
+							<ul>
+								<li><a href="#">Header Banner</a></li>
+								<li><a href="#">Footer Banner</a></li>
+								<li><a href="#">New product</a></li>
+								<li><a href="#">Special product</a></li>
+							</ul>
 						</li>
 						<li class="menu-title">Manager</li>
 						<li class="with-sub">
@@ -42,8 +43,6 @@
 							<ul>
 								<li><a href="#">All product</a></li>
 								<li><a href="#">Add new</a></li>
-								<li><a href="#">New product</a></li>
-								<li><a href="#">Special product</a></li>
 								<li><a href="#">Categories</a></li>
 								<li><a href="#">Tags</a></li>
 							</ul>
@@ -60,6 +59,17 @@
 								<li><a href="#">Add new</a></li>
 							</ul>
 						</li>
+							<li class="with-sub">
+							<a class="waves-effect  waves-light">
+								<span class="s-caret"><i class="fa fa-angle-down"></i></span>
+								<span class="s-icon"><i class="fa fa-group"></i></span>
+								<span class="s-text">Customers</span>
+							</a>
+							<ul>
+								<li><a href="#">All customers</a></li>
+								<li><a href="#">Add new</a></li>
+							</ul>
+						</li>
 								<li class="with-sub">
 							<a class="waves-effect  waves-light">
 								<span class="s-caret"><i class="fa fa-angle-down"></i></span>
@@ -69,17 +79,6 @@
 							</a>
 							<ul>
 								<li><a href="#">All user</a></li>
-								<li><a href="#">Add new</a></li>
-							</ul>
-						</li>
-						<li class="with-sub">
-							<a class="waves-effect  waves-light">
-								<span class="s-caret"><i class="fa fa-angle-down"></i></span>
-								<span class="s-icon"><i class="fa fa-group"></i></span>
-								<span class="s-text">Customers</span>
-							</a>
-							<ul>
-								<li><a href="#">All customers</a></li>
 								<li><a href="#">Add new</a></li>
 							</ul>
 						</li>

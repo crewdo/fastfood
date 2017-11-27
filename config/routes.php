@@ -48,12 +48,18 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
     $routes->fallbacks(DashedRoute::class);
 });
-Router::scope('admin', function ($routes) {
-    $routes->connect('', ['controller' => 'Admin', 'action' => 'index']);
+Router::scope('/admin', function ($routes) {
+    $routes->connect('/', ['controller' => 'Admin', 'action' => 'index']);
     $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
     $routes->connect('/users/view/*&*', ['controller' => 'Users', 'action' => 'index']);
     $routes->fallbacks(DashedRoute::class);
-});
+});    Router::scope('admin/images', function ($routes) {
+    	$routes->connect('/', ['controller' => 'Images', 'action' => 'index']);
+    	$routes->connect('add', ['controller' => 'Images', 'action' => 'add']);
+    	$routes->connect('edit', ['controller' => 'Images', 'action' => 'edit']);
+    	$routes->connect('delete', ['controller' => 'Images', 'action' => 'delete']);
+    	$routes->fallbacks(DashedRoute::class);
+    });
 
 
 /**
