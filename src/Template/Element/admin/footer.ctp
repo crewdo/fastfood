@@ -30,16 +30,10 @@
 		<script type="text/javascript" src="/admin/vendor/jquery-fullscreen-plugin/jquery.fullscreen-min.js"></script>
 		<script type="text/javascript" src="/admin/vendor/waves/waves.min.js"></script>
 		<script type="text/javascript" src="/admin/vendor/switchery/dist/switchery.min.js"></script>
-		<script type="text/javascript" src="/admin/vendor/flot/jquery.flot.min.js"></script>
-		<script type="text/javascript" src="/admin/vendor/flot/jquery.flot.resize.min.js"></script>
-		<script type="text/javascript" src="/admin/vendor/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-		<script type="text/javascript" src="/admin/vendor/CurvedLines/curvedLines.js"></script>
 		<script type="text/javascript" src="/admin/vendor/TinyColor/tinycolor.js"></script>
 		<script type="text/javascript" src="/admin/vendor/sparkline/jquery.sparkline.min.js"></script>
 		<script type="text/javascript" src="/admin/vendor/raphael/raphael.min.js"></script>
 		<script type="text/javascript" src="/admin/vendor/morris/morris.min.js"></script>
-		<script type="text/javascript" src="/admin/vendor/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
-		<script type="text/javascript" src="/admin/vendor/jvectormap/jquery-jvectormap-world-mill.js"></script>
 		<script type="text/javascript" src="/admin/vendor/peity/jquery.peity.js"></script>
 
 		<script type="text/javascript" src="/admin/vendor/DataTables/js/jquery.dataTables.min.js"></script>
@@ -58,7 +52,7 @@
 		<!-- Neptune JS -->
 		<script type="text/javascript" src="/admin/js/app.js"></script>
 		<script type="text/javascript" src="/admin/js/demo.js"></script>
-		<script type="text/javascript" src="/admin/js/index.js"></script>
 		<script type="text/javascript" src="/admin/js/tables-datatable.js"></script>
+		<script type="text/javascript" src="/admin/js/custom.js"></script>
 	</body>
 </html>

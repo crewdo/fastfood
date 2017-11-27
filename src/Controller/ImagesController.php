@@ -20,7 +20,13 @@ class ImagesController extends AppController
      */
     public function index()
     {
+        $this->paginate = ['limit' => ROW_LIMIT,
+         'order' => array(
+            'id' => 'desc'
+            )];
+
         $images = $this->paginate($this->Images);
+        // $this->Paginator->sort('id');
         $this->viewBuilder()->layout('admin/admin');
         $this->set(compact('images'));
         $this->set('_serialize', ['images']);

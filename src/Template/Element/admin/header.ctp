@@ -25,13 +25,9 @@
 			"/admin/vendor/jscrollpane/jquery.jscrollpane.css",
 			"/admin/vendor/waves/waves.min.css",
 			"/admin/vendor/switchery/dist/switchery.min.css",
-			"/admin/vendor/morris/morris.css",
-			"/admin/vendor/jvectormap/jquery-jvectormap-2.0.3.css",
-			"/admin/vendor/jvectormap/jsgrid-theme.min.css",
-			"/admin/vendor/jvectormap/jsgrid-theme.min.css",			
-			"/admin/vendor/DataTables/Buttons/css/dataTables.bootstrap4.min.css",
+			"/admin/vendor/morris/morris.css",		
+			"/admin/vendor/DataTables/css/dataTables.bootstrap4.min.css",
 			"/admin/vendor/DataTables/Buttons/css/buttons.dataTables.min.css",
-			"/admin/vendor/DataTables/Buttons/css/buttons.bootstrap4.min.css",
 			"/admin/css/core.css",
 			"/admin/css/custom.css"
 		])?>
