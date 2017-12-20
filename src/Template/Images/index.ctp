@@ -9,7 +9,7 @@
                     <div class="container-fluid">
                         <h4>Images list</h4>
                         <ol class="breadcrumb no-bg mb-1">
-                            <li class="breadcrumb-item"><a href="tables-datatable.html#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/">Home</a></li>
                             <li class="breadcrumb-item active">Images</li>
                         </ol>
                         <div class="box box-block bg-white">
@@ -19,10 +19,10 @@
                             <table class="table table-striped table-bordered dataTable" id="table_1">
                                 <thead>
                         <tr>
-                        <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('link') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Link</th>
+                        <th scope="col">Created</th>
+                        <th scope="col">Modified</th>
                         <th scope="col" class="actions"><?= __('Actions') ?></th>
                         </tr>
                                 </thead>
@@ -54,3 +54,4 @@
                         </div>
                     </div>
                 </div>
+                <?php echo  WWW_ROOT . 'img' .DS?>

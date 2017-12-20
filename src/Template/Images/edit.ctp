@@ -12,7 +12,7 @@
                 ['confirm' => __('Are you sure you want to delete # {0}?', $image->id)]
             )
         ?></li>
-        <li><?= $this->Html->link(__('List Images'), ['action' => 'index']) ?></li>
+        <li>List Images</li>
         <li><?= $this->Html->link(__('List Foot Banners'), ['controller' => 'FootBanners', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Foot Banner'), ['controller' => 'FootBanners', 'action' => 'add']) ?></li>
     </ul>

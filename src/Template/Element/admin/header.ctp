@@ -28,6 +28,7 @@
 			"/admin/vendor/morris/morris.css",		
 			"/admin/vendor/DataTables/css/dataTables.bootstrap4.min.css",
 			"/admin/vendor/DataTables/Buttons/css/buttons.dataTables.min.css",
+			"/admin/vendor/dropify/dist/css/dropify.min.css",
 			"/admin/css/core.css",
 			"/admin/css/custom.css"
 		])?>
