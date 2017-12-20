@@ -22,6 +22,9 @@ class AboutsFixture extends TestFixture
         'content' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
+        '_indexes' => [
+            'title' => ['type' => 'index', 'columns' => ['title'], 'length' => []],
+        ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
         ],
@@ -42,8 +45,8 @@ class AboutsFixture extends TestFixture
             'id' => 1,
             'title' => 1,
             'content' => 1,
-            'created' => '2017-11-20 07:18:22',
-            'modified' => '2017-11-20 07:18:22'
+            'created' => '2017-11-27 01:41:43',
+            'modified' => '2017-11-27 01:41:43'
         ],
     ];
 }

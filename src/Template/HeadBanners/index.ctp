@@ -20,7 +20,7 @@
                 <th scope="col"><?= $this->Paginator->sort('title_nd') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('start_special_date') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('end__special_date') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('image_list_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('image_list') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -34,7 +34,7 @@
                 <td><?= h($headBanner->title_nd) ?></td>
                 <td><?= h($headBanner->start_special_date) ?></td>
                 <td><?= h($headBanner->end__special_date) ?></td>
-                <td><?= h($headBanner->image_list_id) ?></td>
+                <td><?= h($headBanner->image_list) ?></td>
                 <td><?= h($headBanner->created) ?></td>
                 <td><?= h($headBanner->modified) ?></td>
                 <td class="actions">

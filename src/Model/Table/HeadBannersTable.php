@@ -9,8 +9,6 @@ use Cake\Validation\Validator;
 /**
  * HeadBanners Model
  *
- * @property \App\Model\Table\ImageListsTable|\Cake\ORM\Association\BelongsTo $ImageLists
- *
  * @method \App\Model\Entity\HeadBanner get($primaryKey, $options = [])
  * @method \App\Model\Entity\HeadBanner newEntity($data = null, array $options = [])
  * @method \App\Model\Entity\HeadBanner[] newEntities(array $data, array $options = [])
@@ -39,11 +37,6 @@ class HeadBannersTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
-
-        $this->belongsTo('ImageLists', [
-            'foreignKey' => 'image_list_id',
-            'joinType' => 'INNER'
-        ]);
     }
 
     /**
@@ -76,20 +69,11 @@ class HeadBannersTable extends Table
             ->dateTime('end__special_date')
             ->allowEmpty('end__special_date');
 
+        $validator
+            ->scalar('image_list')
+            ->requirePresence('image_list', 'create')
+            ->notEmpty('image_list');
+
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['image_list_id'], 'ImageLists'));
-
-        return $rules;
     }
 }

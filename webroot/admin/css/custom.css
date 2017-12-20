@@ -12,6 +12,16 @@
 /*    top: 10%;
     transform: translate(0, -50%);*/
 }
+.edit-icon, .delete-icon{
+    font-size: 20px;
+}
+.edit-icon{
+color: #088990;
+margin-right:8px;
+}
+.delete-icon{
+color: #e01212;
+}
 @media screen and (max-width: 991px) and (min-width: 768px){
     .site-title{
         font-size: 13px;

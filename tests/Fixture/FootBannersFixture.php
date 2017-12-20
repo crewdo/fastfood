@@ -48,8 +48,8 @@ class FootBannersFixture extends TestFixture
             'image_id' => 1,
             'title' => 'Lorem ipsum dolor sit amet',
             'content' => 'Lorem ipsum dolor sit amet',
-            'created' => '2017-11-20 07:21:25',
-            'modified' => '2017-11-20 07:21:25'
+            'created' => '2017-11-27 01:41:54',
+            'modified' => '2017-11-27 01:41:54'
         ],
     ];
 }

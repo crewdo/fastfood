@@ -4,19 +4,20 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * ProductsCategory Entity
+ * OrderDetail Entity
  *
  * @property int $id
- * @property string $name
- * @property int $parent_id
- * @property int $sort_order
+ * @property int $order_id
+ * @property int $product_id
+ * @property int $quantity
+ * @property float $money
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \App\Model\Entity\ParentProductsCategory $parent_products_category
- * @property \App\Model\Entity\ChildProductsCategory[] $child_products_categories
+ * @property \App\Model\Entity\Order $order
+ * @property \App\Model\Entity\Product $product
  */
-class ProductsCategory extends Entity
+class OrderDetail extends Entity
 {
 
     /**
@@ -29,12 +30,13 @@ class ProductsCategory extends Entity
      * @var array
      */
     protected $_accessible = [
-        'name' => true,
-        'parent_id' => true,
-        'sort_order' => true,
+        'order_id' => true,
+        'product_id' => true,
+        'quantity' => true,
+        'money' => true,
         'created' => true,
         'modified' => true,
-        'parent_products_category' => true,
-        'child_products_categories' => true
+        'order' => true,
+        'product' => true
     ];
 }

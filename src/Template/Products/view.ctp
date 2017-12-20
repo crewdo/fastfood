@@ -25,6 +25,10 @@
             <td><?= $product->has('products_category') ? $this->Html->link($product->products_category->name, ['controller' => 'ProductsCategories', 'action' => 'view', $product->products_category->id]) : '' ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Status') ?></th>
+            <td><?= h($product->status) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Name') ?></th>
             <td><?= h($product->name) ?></td>
         </tr>
@@ -37,16 +41,12 @@
             <td><?= h($product->content) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Image List Id') ?></th>
-            <td><?= h($product->image_list_id) ?></td>
+            <th scope="row"><?= __('Image List') ?></th>
+            <td><?= h($product->image_list) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($product->id) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Status') ?></th>
-            <td><?= $this->Number->format($product->status) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Price') ?></th>

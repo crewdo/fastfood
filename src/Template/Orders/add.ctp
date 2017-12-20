@@ -18,8 +18,10 @@
         <?php
             echo $this->Form->control('customer_id', ['options' => $customers, 'empty' => true]);
             echo $this->Form->control('status');
-            echo $this->Form->control('money');
             echo $this->Form->control('message');
+            echo $this->Form->control('address');
+            echo $this->Form->control('ship_time');
+            echo $this->Form->control('total');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

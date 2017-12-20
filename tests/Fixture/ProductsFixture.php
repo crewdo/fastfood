@@ -19,7 +19,7 @@ class ProductsFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 255, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'category_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'status' => ['type' => 'tinyinteger', 'length' => 4, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null],
+        'status' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'name' => ['type' => 'string', 'length' => 100, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'price' => ['type' => 'decimal', 'length' => 15, 'precision' => 2, 'unsigned' => false, 'null' => false, 'default' => '0.00', 'comment' => ''],
         'unit' => ['type' => 'string', 'length' => 50, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
@@ -29,7 +29,7 @@ class ProductsFixture extends TestFixture
         'special' => ['type' => 'tinyinteger', 'length' => 4, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null],
         'review_number' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'review' => ['type' => 'float', 'length' => null, 'precision' => null, 'unsigned' => false, 'null' => false, 'default' => '0', 'comment' => ''],
-        'image_list_id' => ['type' => 'string', 'length' => 45, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
+        'image_list' => ['type' => 'string', 'length' => 45, 'null' => false, 'default' => null, 'collate' => 'utf8_unicode_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         'modified' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
         '_indexes' => [
@@ -55,7 +55,7 @@ class ProductsFixture extends TestFixture
         [
             'id' => 1,
             'category_id' => 1,
-            'status' => 1,
+            'status' => 'Lorem ipsum dolor sit amet',
             'name' => 'Lorem ipsum dolor sit amet',
             'price' => 1.5,
             'unit' => 'Lorem ipsum dolor sit amet',
@@ -65,9 +65,9 @@ class ProductsFixture extends TestFixture
             'special' => 1,
             'review_number' => 1,
             'review' => 1,
-            'image_list_id' => 'Lorem ipsum dolor sit amet',
-            'created' => '2017-11-20 07:41:55',
-            'modified' => '2017-11-20 07:41:55'
+            'image_list' => 'Lorem ipsum dolor sit amet',
+            'created' => '2017-11-27 01:41:13',
+            'modified' => '2017-11-27 01:41:13'
         ],
     ];
 }

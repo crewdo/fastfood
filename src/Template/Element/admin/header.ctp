@@ -7,7 +7,12 @@
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="description" content="">
 		<meta name="author" content="">
-
+		 <link rel="icon" type="image/x-icon" href="favicon.ico" /> 
+		<?= $this->Html->meta(
+			'favicon.ico',
+			'/public/images/favicon.ico',
+			array('type'=>'icon')
+		) ?>
 		<!-- Title -->
 		<title>FastFood | admin</title>
 
@@ -20,11 +25,12 @@
 			"/admin/vendor/jscrollpane/jquery.jscrollpane.css",
 			"/admin/vendor/waves/waves.min.css",
 			"/admin/vendor/switchery/dist/switchery.min.css",
-			"/admin/vendor/morris/morris.css",
-			"/admin/vendor/jvectormap/jquery-jvectormap-2.0.3.css",
+			"/admin/vendor/morris/morris.css",		
+			"/admin/vendor/DataTables/css/dataTables.bootstrap4.min.css",
+			"/admin/vendor/DataTables/Buttons/css/buttons.dataTables.min.css",
+			"/admin/vendor/dropify/dist/css/dropify.min.css",
 			"/admin/css/core.css",
 			"/admin/css/custom.css"
-
 		])?>
 
 		<!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -47,7 +53,5 @@
 			<!-- Header -->
 			<?= $this->Element('admin/sideheader') ?>
 			<!--  -->
-		<div class="site-content">
-		<div class="content-area py-1">
-			<div class="container-fluid">
+			<div class="site-content">
 

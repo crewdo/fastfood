@@ -20,8 +20,10 @@
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('customer_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('status') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('money') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('message') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('address') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('ship_time') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('total') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
@@ -32,9 +34,11 @@
             <tr>
                 <td><?= $this->Number->format($order->id) ?></td>
                 <td><?= $order->has('customer') ? $this->Html->link($order->customer->name, ['controller' => 'Customers', 'action' => 'view', $order->customer->id]) : '' ?></td>
-                <td><?= $this->Number->format($order->status) ?></td>
-                <td><?= $this->Number->format($order->money) ?></td>
+                <td><?= h($order->status) ?></td>
                 <td><?= h($order->message) ?></td>
+                <td><?= h($order->address) ?></td>
+                <td><?= h($order->ship_time) ?></td>
+                <td><?= $this->Number->format($order->total) ?></td>
                 <td><?= h($order->created) ?></td>
                 <td><?= h($order->modified) ?></td>
                 <td class="actions">

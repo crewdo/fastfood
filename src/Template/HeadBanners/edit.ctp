@@ -24,7 +24,7 @@
             echo $this->Form->control('title_nd');
             echo $this->Form->control('start_special_date', ['empty' => true]);
             echo $this->Form->control('end__special_date', ['empty' => true]);
-            echo $this->Form->control('image_list_id');
+            echo $this->Form->control('image_list');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

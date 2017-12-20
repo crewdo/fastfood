@@ -7,22 +7,22 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * OrdersDetails Model
+ * OrderDetails Model
  *
  * @property \App\Model\Table\OrdersTable|\Cake\ORM\Association\BelongsTo $Orders
  * @property \App\Model\Table\ProductsTable|\Cake\ORM\Association\BelongsTo $Products
  *
- * @method \App\Model\Entity\OrdersDetail get($primaryKey, $options = [])
- * @method \App\Model\Entity\OrdersDetail newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\OrdersDetail[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\OrdersDetail|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\OrdersDetail patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\OrdersDetail[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\OrdersDetail findOrCreate($search, callable $callback = null, $options = [])
+ * @method \App\Model\Entity\OrderDetail get($primaryKey, $options = [])
+ * @method \App\Model\Entity\OrderDetail newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\OrderDetail[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\OrderDetail|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\OrderDetail patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\OrderDetail[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\OrderDetail findOrCreate($search, callable $callback = null, $options = [])
  *
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
-class OrdersDetailsTable extends Table
+class OrderDetailsTable extends Table
 {
 
     /**
@@ -35,14 +35,14 @@ class OrdersDetailsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('orders_details');
+        $this->setTable('order_details');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
 
         $this->belongsTo('Orders', [
-            'foreignKey' => 'orders_id',
+            'foreignKey' => 'order_id',
             'joinType' => 'INNER'
         ]);
         $this->belongsTo('Products', [
@@ -85,7 +85,7 @@ class OrdersDetailsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['orders_id'], 'Orders'));
+        $rules->add($rules->existsIn(['order_id'], 'Orders'));
         $rules->add($rules->existsIn(['product_id'], 'Products'));
 
         return $rules;

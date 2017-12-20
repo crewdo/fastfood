@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * Orders Model
  *
  * @property \App\Model\Table\CustomersTable|\Cake\ORM\Association\BelongsTo $Customers
+ * @property |\Cake\ORM\Association\HasMany $OrderDetails
  *
  * @method \App\Model\Entity\Order get($primaryKey, $options = [])
  * @method \App\Model\Entity\Order newEntity($data = null, array $options = [])
@@ -43,6 +44,9 @@ class OrdersTable extends Table
         $this->belongsTo('Customers', [
             'foreignKey' => 'customer_id'
         ]);
+        $this->hasMany('OrderDetails', [
+            'foreignKey' => 'order_id'
+        ]);
     }
 
     /**
@@ -58,18 +62,29 @@ class OrdersTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
+            ->scalar('status')
             ->requirePresence('status', 'create')
             ->notEmpty('status');
-
-        $validator
-            ->decimal('money')
-            ->requirePresence('money', 'create')
-            ->notEmpty('money');
 
         $validator
             ->scalar('message')
             ->requirePresence('message', 'create')
             ->notEmpty('message');
+
+        $validator
+            ->scalar('address')
+            ->requirePresence('address', 'create')
+            ->notEmpty('address');
+
+        $validator
+            ->dateTime('ship_time')
+            ->requirePresence('ship_time', 'create')
+            ->notEmpty('ship_time');
+
+        $validator
+            ->decimal('total')
+            ->requirePresence('total', 'create')
+            ->notEmpty('total');
 
         return $validator;
     }

@@ -23,20 +23,28 @@
             <td><?= $order->has('customer') ? $this->Html->link($order->customer->name, ['controller' => 'Customers', 'action' => 'view', $order->customer->id]) : '' ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Status') ?></th>
+            <td><?= h($order->status) ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Message') ?></th>
             <td><?= h($order->message) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Address') ?></th>
+            <td><?= h($order->address) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($order->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Status') ?></th>
-            <td><?= $this->Number->format($order->status) ?></td>
+            <th scope="row"><?= __('Total') ?></th>
+            <td><?= $this->Number->format($order->total) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Money') ?></th>
-            <td><?= $this->Number->format($order->money) ?></td>
+            <th scope="row"><?= __('Ship Time') ?></th>
+            <td><?= h($order->ship_time) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>
