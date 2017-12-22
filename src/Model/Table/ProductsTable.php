@@ -87,13 +87,11 @@ class ProductsTable extends Table
 
         $validator
             ->scalar('content')
-            ->requirePresence('content', 'create')
-            ->notEmpty('content');
+            ->requirePresence('content', 'create');
 
         $validator
             ->integer('discount')
-            ->requirePresence('discount', 'create')
-            ->notEmpty('discount');
+            ->requirePresence('discount', 'create');
 
         $validator
             ->requirePresence('hot', 'create')
@@ -105,13 +103,12 @@ class ProductsTable extends Table
 
         $validator
             ->integer('review_number')
-            ->requirePresence('review_number', 'create')
-            ->notEmpty('review_number');
+            ->requirePresence('review_number', 'create');
+
 
         $validator
             ->numeric('review')
-            ->requirePresence('review', 'create')
-            ->notEmpty('review');
+            ->requirePresence('review', 'create');
 
         return $validator;
     }

@@ -62,6 +62,10 @@ class ProductImagesTable extends Table
             ->scalar('link')
             ->requirePresence('link', 'create')
             ->notEmpty('link');
+        $validator
+            ->scalar('feature')
+            ->requirePresence('feature', 'create')
+            ->notEmpty('feature');
 
         return $validator;
     }
