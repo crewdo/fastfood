@@ -41,9 +41,9 @@
 					<span class="s-text">Products</span>
 				</a>
 				<ul>
-					<li><a href="#">All product</a></li>
-					<li><a href="#">Add new</a></li>
-					<li><a href="#">Categories</a></li>
+					<li><?= $this->Html->link('All products',['controller' => 'Products', 'action' => 'index']); ?> </li>
+					<li><?= $this->Html->link('Add new',['controller' => 'Products', 'action' => 'add']); ?></li>
+					<li><?= $this->Html->link('Categories',['controller' => 'Categories', 'action' => 'index']); ?></li>
 					<li><a href="#">Tags</a></li>
 				</ul>
 			</li>

@@ -46,6 +46,10 @@ class ProductsTable extends Table
             'foreignKey' => 'category_id',
             'joinType' => 'INNER'
         ]);
+        $this->belongsTo('ProductUnits', [
+            'foreignKey' => 'unit_id',
+            'joinType' => 'INNER'
+        ]);
         $this->hasMany('OrderDetails', [
             'foreignKey' => 'product_id'
         ]);
@@ -80,11 +84,6 @@ class ProductsTable extends Table
             ->decimal('price')
             ->requirePresence('price', 'create')
             ->notEmpty('price');
-
-        $validator
-            ->scalar('unit')
-            ->requirePresence('unit', 'create')
-            ->notEmpty('unit');
 
         $validator
             ->scalar('content')
@@ -127,6 +126,7 @@ class ProductsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['category_id'], 'ProductCategories'));
+        $rules->add($rules->existsIn(['unit_id'], 'ProductUnits'));
 
         return $rules;
     }

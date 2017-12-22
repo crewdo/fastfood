@@ -2,24 +2,31 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\Filesystem\File;
+use Cake\Filesystem\Folder;
 /**
- * ProductImages Controller
+ * Images Controller
  *
- * @property \App\Model\Table\ProductImagesTable $ProductImages
+ * @property \App\Model\Table\ImagesTable $Images
  *
- * @method \App\Model\Entity\ProductImage[] paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\Image[] paginate($object = null, array $settings = [])
  */
-class ProductImagesController extends AppController
+class ImagesController extends AppController
 {
-  public function index()
+
+    /**
+     * Index method
+     *
+     * @return \Cake\Http\Response|void
+     */
+    public function index()
     {
         $this->paginate = ['limit' => ROW_LIMIT,
          'order' => array(
             'id' => 'desc'
             )];
 
-        $images = $this->paginate($this->Images);
+        $images = $this->paginate($this->ProductImages);
         // $this->Paginator->sort('id');
         $this->viewBuilder()->layout('admin/admin');
         $this->set(compact('images'));

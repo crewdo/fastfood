@@ -63,6 +63,15 @@ Router::scope('/admin', function ($routes) {
         $routes->fallbacks(DashedRoute::class);
     });
 
+        Router::scope('admin/products/', function ($routes) {
+        $routes->connect('/', ['controller' => 'Products', 'action' => 'index']);
+        $routes->connect('add', ['controller' => 'Products', 'action' => 'add']);
+        $routes->connect('edit', ['controller' => 'Products', 'action' => 'edit']);
+        $routes->connect('delete', ['controller' => 'Products', 'action' => 'delete']);
+        $routes->fallbacks(DashedRoute::class);
+    });
+
+
 
 /**
  * Load all plugin routes. See the Plugin documentation on

@@ -1,4 +1,4 @@
-<?php
+  <?php
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Image[]|\Cake\Collection\CollectionInterface $images
@@ -16,7 +16,8 @@
                             <h5 class="mb-1"><?= $this->Html->link(__('New image'), ['action' => 'add'],
                          array('class'=>'btn btn-info w-min-sm mb-0-25 waves-effect waves-light','id'=>'', 'escape' => false))?></h5>
                      
-                            <table class="table table-striped table-bordered dataTable" id="table_1">
+                            <!-- <table class="table table-striped table-bordered dataTable" id="table_1"> -->
+                              <table>
                                 <thead>
                         <tr>
                         <th scope="col">Id</th>

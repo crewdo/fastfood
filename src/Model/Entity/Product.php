@@ -42,7 +42,7 @@ class Product extends Entity
         'status' => true,
         'name' => true,
         'price' => true,
-        'unit' => true,
+        'unit_id' => true,
         'content' => true,
         'discount' => true,
         'hot' => true,

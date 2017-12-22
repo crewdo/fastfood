@@ -20,9 +20,15 @@ class ProductsController extends AppController
      */
     public function index()
     {
-        $this->paginate = [
-            'contain' => ['ProductCategories']
-        ];
+        $this->viewBuilder()->layout('admin/admin');
+               $this->paginate = ['limit' => ROW_LIMIT,
+         'order' => array(
+            'name' => 'desc'
+            ),
+         'contain'=> ['ProductCategories', 'ProductUnits']
+
+
+     ];
         $products = $this->paginate($this->Products);
 
         $this->set(compact('products'));
@@ -51,8 +57,9 @@ class ProductsController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add()    
     {
+        $this->viewBuilder()->layout('admin/admin');
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
@@ -62,10 +69,15 @@ class ProductsController extends AppController
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
+            // echo 'hahaha';
+            
         }
-        $productCategories = $this->Products->ProductCategories->find('list', ['limit' => 200]);
+        $productCategories = $this->Products->ProductCategories->find('list', ['limit' => ROW_LIMIT]);
+        $productUnits = $this->Products->ProductUnits->find('list', ['limit' => ROW_LIMIT]);
         $this->set(compact('product', 'productCategories'));
-        $this->set('_serialize', ['product']);
+        $this->set(compact('unit', 'productUnits'));
+        
+        $this->set('_serialize', ['product', 'unit']);
     }
 
     /**
