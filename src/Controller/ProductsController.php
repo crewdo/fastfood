@@ -44,8 +44,9 @@ class ProductsController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $product = $this->Products->get($id, [
-            'contain' => ['ProductCategories', 'OrderDetails', 'ProductImages']
+            'contain' => ['ProductCategories', 'OrderDetails', 'ProductImages', 'ProductUnits']
         ]);
 
         $this->set('product', $product);
@@ -154,6 +155,7 @@ class ProductsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $product = $this->Products->get($id, [
             'contain' => []
         ]);
@@ -166,14 +168,11 @@ class ProductsController extends AppController
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
 
-
-
-
-
-
         }
-        $productCategories = $this->Products->ProductCategories->find('list', ['limit' => 200]);
+        $productCategories = $this->Products->ProductCategories->find('list', ['limit' => ROW_LIMIT]);
         $this->set(compact('product', 'productCategories'));
+        $productUnits = $this->Products->ProductUnits->find('list', ['limit' => ROW_LIMIT]);
+        $this->set(compact('unit', 'productUnits'));
         $this->set('_serialize', ['product']);
     }
 

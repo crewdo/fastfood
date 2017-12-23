@@ -1,44 +1,40 @@
-<?php
-/**
- * @var \App\View\AppView $this
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $product->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $product->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Products'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Product Categories'), ['controller' => 'ProductCategories', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Product Category'), ['controller' => 'ProductCategories', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Order Details'), ['controller' => 'OrderDetails', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Order Detail'), ['controller' => 'OrderDetails', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Product Images'), ['controller' => 'ProductImages', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Product Image'), ['controller' => 'ProductImages', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="products form large-9 medium-8 columns content">
+
     <?= $this->Form->create($product) ?>
     <fieldset>
-        <legend><?= __('Edit Product') ?></legend>
+        <legend><?= __('Chỉnh sửa sản phẩm') ?></legend>
         <?php
             echo $this->Form->control('category_id', ['options' => $productCategories]);
-            echo $this->Form->control('status');
+            ?>
+             <input type="radio" id="con" name="status" value="1" <?= $product->status ? 'checked' : '' ?> >
+            <label for="con">Còn</label>
+            <input type="radio" id="het" name="status" value="0" <?= $product->status ? '' : 'checked' ?> >
+            <label for="het">Hết</label>
+<?php
+
             echo $this->Form->control('name');
             echo $this->Form->control('price');
-            echo $this->Form->control('unit');
+            echo $this->Form->control('unit_id', ['options' => $productUnits]);
             echo $this->Form->control('content');
             echo $this->Form->control('discount');
-            echo $this->Form->control('hot');
-            echo $this->Form->control('special');
+?>
+
+        <input type="radio" id="hot" name="hot" value="1" <?= $product->status ? 'checked' : '' ?>>
+                   <label for="hot">Hot</label>
+   
+                   <input type="radio" id="kohot" name="hot" value="0" <?= $product->status ? '' : 'checked' ?>>
+                   <label for="kohot">Không hot</label>
+ 
+
+
+            <input type="radio" id="dacbiet" name="special" value="1" <?= $product->status ? 'checked' : '' ?>>
+                   <label for="dacbiet">Đặc biệt</label>
+   
+            <input type="radio" id="kodacbiet" name="special" value="0" <?= $product->status ? '' : 'checked' ?>>
+                      <label for="kodacbiet">Không đặc biệt</label>
+<?php
             echo $this->Form->control('review_number');
             echo $this->Form->control('review');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
-</div>
