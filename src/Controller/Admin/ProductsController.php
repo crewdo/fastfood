@@ -62,6 +62,8 @@ class ProductsController extends AppController
     {
         $this->viewBuilder()->layout('admin/admin');
         $this->loadModel('ProductImages');
+         $this->loadModel('ProductUnits');
+         $this->loadModel('ProductCategories');
         $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
             $product = $this->Products->patchEntity($product, $this->request->getData());
@@ -74,16 +76,12 @@ class ProductsController extends AppController
             else
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
 
-          $productCategories = $this->Products->ProductCategories->find('list', ['limit' => ROW_LIMIT]);
-        $productUnits = $this->Products->ProductUnits->find('list', ['limit' => ROW_LIMIT]);
-        $this->set(compact('product', 'productCategories'));
-        $this->set(compact('unit', 'productUnits'));
-        
-        $this->set('_serialize', ['product', 'unit']);
+        $productCategories = $this->Products->ProductCategories->find();
+        $productUnits = $this->ProductUnits->find();
+        $this->set(compact('product'));
+        $this->set(['unit'=> $productUnits, 'productCategories'=> $productCategories ]);
+
             // echo 'hahaha';
-
-
-
 
             if (!empty($_FILES["link"]["name"])) {
             $target_dir = WWW_ROOT . 'img/';

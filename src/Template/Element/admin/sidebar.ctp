@@ -51,7 +51,7 @@
 			<li class="with-sub">
 				<a class="waves-effect  waves-light">
 					<span class="s-caret"><i class="fa fa-angle-down"></i></span>
-					<span class="s-icon"><i class="fa fa-money"></i></span>
+					<span class="s-icon"><i class="fa fa-folder-open-o"></i></span>
 					<span class="s-text">Categories</span>
 				</a>
 				<ul>
