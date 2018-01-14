@@ -215,3 +215,4 @@ Type::build('timestamp')
 if (Configure::read('debug')) {
     Plugin::load('DebugKit', ['bootstrap' => true]);
 }
+define('ROW_LIMIT',10000);

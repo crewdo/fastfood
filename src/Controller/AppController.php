@@ -25,7 +25,7 @@ use Cake\Event\Event;
  *
  * @link https://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
- const ROW_LIMIT = 10000;
+
 class AppController extends Controller
 {
 
@@ -38,7 +38,6 @@ class AppController extends Controller
      *
      * @return void
      */
-
     public function initialize()
     {
         parent::initialize();

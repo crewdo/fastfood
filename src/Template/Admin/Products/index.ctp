@@ -5,7 +5,7 @@
     <table  class="table table-striped table-bordered dataTable vertical-table" id="table_1" cellpadding="0" cellspacing="0">
         <thead>
             <tr>
-                <th scope="col" text-algin="center">STT</th>
+                <th scope="col" text-algin="center">ID</th>
                 <th scope="col">Loại</th>
                 <th scope="col">Trạng thái</th>
                 <th scope="col">Tên món ăn</th>
@@ -18,7 +18,7 @@
         <tbody>
             <?php foreach ($products as $product): ?>
             <tr>
-                <td>1</td>
+                <td><?= $this->Number->format($product->id) ?></td>
                 <td><?= $product->has('product_category') ? $this->Html->link($product->product_category->name, ['controller' => 'ProductCategories', 'action' => 'edit', $product->product_category->id]) : '' ?></td>
                 <td><?= $product->status ? 'Còn' : 'Hết'; ?></td>
                 <td><?= h($product->name) ?></td>
