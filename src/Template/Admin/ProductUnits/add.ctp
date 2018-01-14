@@ -9,13 +9,13 @@
 <ol class="breadcrumb no-bg mb-1">
 <li class="breadcrumb-item"><?= $this->Html->link(__('Home'), '/admin/') ?></li>
 <li class="breadcrumb-item"><?= $this->Html->link(__('List Product Units'), ['action' => 'index']) ?></li>
-<li class="breadcrumb-item active">Add product Unit</li>
+<li class="breadcrumb-item active">Add Product Unit</li>
 </ol>
 <div class=" form large-9 medium-8 columns content col-md-12 box box-block bg-white">
-<?= $this->Flash->render('addProductUnit') ?>
+<?= $this->Flash->render('add') ?>
 
 <div class="productUnits form large-9 medium-8 columns content">
-    <?= $this->Form->create($productUnit, []) ?>
+    <?= $this->Form->create($productUnit, ['class' => 'form-material material-primary']) ?>
     <fieldset>
         <legend><?= __('Add Product Unit') ?></legend>
         

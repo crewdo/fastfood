@@ -57,7 +57,7 @@ class CustomersController extends AppController
         if ($this->request->is('post')) {
             $customer = $this->Customers->patchEntity($customer, $this->request->getData());
             if ($this->Customers->save($customer)) {
-                $this->Flash->success(__('The customer has been saved.'));
+                $this->Flash->success(__('The customer has been saved.'),['key' => 'add']);
 
                 return $this->redirect(['action' => 'index']);
             }

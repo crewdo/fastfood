@@ -8,10 +8,7 @@
 </ol>
 
 <div class="products form large-9 medium-8 columns content col-md-12 box box-block bg-white">
-<!--   <div class="alert alert-success alert-dismissable">
-  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong></strong> 
-</div> -->
+
 <?= $this->Flash->render('addProduct') ?>
 
     <?= $this->Form->create(null, ['class' => 'form-material material-primary', 'enctype' => 'multipart/form-data'])  ?>

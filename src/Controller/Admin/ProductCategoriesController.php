@@ -36,6 +36,7 @@ class ProductCategoriesController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $productCategory = $this->ProductCategories->get($id, [
             'contain' => []
         ]);
@@ -51,7 +52,9 @@ class ProductCategoriesController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $productCategory = $this->ProductCategories->newEntity();
+        
         if ($this->request->is('post')) {
             $productCategory = $this->ProductCategories->patchEntity($productCategory, $this->request->getData());
             if ($this->ProductCategories->save($productCategory)) {
@@ -74,6 +77,7 @@ class ProductCategoriesController extends AppController
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $productCategory = $this->ProductCategories->get($id, [
             'contain' => []
         ]);
