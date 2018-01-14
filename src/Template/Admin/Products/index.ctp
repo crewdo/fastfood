@@ -1,8 +1,14 @@
+<div class="content-area py-1">
+    <div class="container-fluid">
+    <ol class="breadcrumb no-bg mb-1">
+       <li class="breadcrumb-item"><?= $this->Html->link(__('Home'), '/admin/') ?></li>
+      <li class="breadcrumb-item active">List Products</li>
+    </ol>
 <div class="row images view large-9 medium-8 columns content" style="margin: 5px 5px">
 
     <div class="col-md-12 box box-block bg-white">
     <h3><?= __('Products') ?></h3>
-    <?= $this->Html->link('Add new', ['controller' => 'Products', 'action' => 'add'], ['class'=>'btn btn-primary']) ?>
+    <?= $this->Html->link('Add new', ['controller' => 'Products', 'action' => 'add'], ['class'=>'btn btn-primary mgb-10']) ?>
     <table  class="table table-striped table-bordered dataTable vertical-table" id="table_1" cellpadding="0" cellspacing="0" style="margin-top:10px">
         <thead>
             <tr>
@@ -55,4 +61,6 @@
 
 
 
+</div>
+</div>
 </div>

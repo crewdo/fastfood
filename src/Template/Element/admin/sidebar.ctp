@@ -2,8 +2,8 @@
 	<div class="custom-scroll custom-scroll-light">
 		<ul class="sidebar-menu">
 			<li class="menu-title">Main</li>
-			<li class="active">
-				<a href="#" class="waves-effect waves-light">
+			<li >
+				<a href="/admin/" class="waves-effect waves-light">
 					<span class="s-icon"><i class="ti-anchor"></i></span>
 					<span class="s-text">Dashboard</span>
 				</a>
@@ -48,6 +48,7 @@
 					<li><a href="#">Tags</a></li>
 				</ul>
 			</li>
+
 			<li class="with-sub">
 				<a class="waves-effect  waves-light">
 					<span class="s-caret"><i class="fa fa-angle-down"></i></span>
@@ -60,17 +61,11 @@
 					<li><?= $this->Html->link('Add new',['controller' => 'ProductCategories', 'action' => 'add']); ?></li>
 				</ul>
 			</li>
-			<li class="with-sub">
-				<a class="waves-effect  waves-light">
-					<span class="s-caret"><i class="fa fa-angle-down"></i></span>
+				<li>
+				<a href="/admin/orders" class="waves-effect  waves-light">
 					<span class="s-icon"><i class="fa fa-money"></i></span>
-					<span class="s-text">Order</span>
+					<span class="s-text">Orders</span>
 				</a>
-				<ul>
-
-					<li><?= $this->Html->link('All orders','/admin/orders',['class' => '', 'escape'=>false]); ?></li>
-					<li><?= $this->Html->link('Add new','/admin/orders/add',['class' => '', 'escape'=>false]); ?></li>
-				</ul>
 			</li>
 			<li class="with-sub">
 				<a class="waves-effect  waves-light">

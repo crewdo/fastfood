@@ -92,3 +92,6 @@ select.form-control:not([size]):not([multiple]){
 #fearure-image{
     border:2px solid #f59345;
 }
+.mgb-10{
+        margin-bottom: 10px;
+}

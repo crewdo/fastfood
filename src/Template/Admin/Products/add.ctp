@@ -1,8 +1,18 @@
+<div class="content-area py-1">
+    <div class="container-fluid">
+
+<ol class="breadcrumb no-bg mb-1">
+<li class="breadcrumb-item"><?= $this->Html->link(__('Home'), ['controller' => 'Admin', 'action' => 'index']) ?></li>
+<li class="breadcrumb-item"><?= $this->Html->link(__('List Product Units'), ['action' => 'index']) ?></li>
+<li class="breadcrumb-item active">Add product Unit</li>
+</ol>
+
 <div class="products form large-9 medium-8 columns content col-md-12 box box-block bg-white">
-  <div class="alert alert-success alert-dismissable">
+<!--   <div class="alert alert-success alert-dismissable">
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong><?= $this->Flash->render('addProduct') ?></strong> 
-</div>
+  <strong></strong> 
+</div> -->
+<?= $this->Flash->render('addProduct') ?>
 
     <?= $this->Form->create(null, ['class' => 'form-material material-primary', 'enctype' => 'multipart/form-data'])  ?>
     <fieldset>
@@ -118,7 +128,7 @@
                 <button type="button" class="btn btn-success" id="more-image">More images</button>
              </div>
              
-            </fieldset>
+
 
             <?php
             echo $this->Form->hidden('review_number', ['name'=>'review_number', 'value'=> 0]);
@@ -130,3 +140,5 @@
 </div>
  <!--       <label for="input-file-now">Hình hiển thị</label> -->
            
+</div>
+</div>

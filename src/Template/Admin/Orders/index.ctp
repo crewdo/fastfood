@@ -4,10 +4,15 @@
  * @var \App\Model\Entity\Order[]|\Cake\Collection\CollectionInterface $orders
  */
 ?>
+<div class="content-area py-1">
+    <div class="container-fluid">
+    <ol class="breadcrumb no-bg mb-1">
+          <li class="breadcrumb-item"><?= $this->Html->link(__('Home'), '/admin/') ?></li>>
+      <li class="breadcrumb-item active">List Orders</li>
+    </ol>
 <div class="row images view large-9 medium-8 columns content" style="margin: 5px 5px">
 
     <div class="col-md-12 box box-block bg-white">
-   <?= $this->Html->link(__('New Order'), ['action' => 'add']) ?>
    <h3><?= __('Orders') ?></h3>
     <table  class="table table-striped table-bordered dataTable vertical-table" id="table_1" cellpadding="0" cellspacing="0">
         <thead>
@@ -48,6 +53,8 @@
 </div>
 
 
+</div>
+</div>
 </div>
 
 
