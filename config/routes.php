@@ -45,7 +45,15 @@ Router::defaultRouteClass(DashedRoute::class);
 
 Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/', ['controller' => 'Public', 'action' => 'index']);
-    $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+    $routes->connect('/product', ['controller' => 'Public', 'action' => 'product']);
+    $routes->connect('/products', ['controller' => 'Public', 'action' => 'products']);
+    $routes->connect('/check-out', ['controller' => 'Public', 'action' => 'checkOut']);
+    $routes->connect('/about', ['controller' => 'Pages', 'action' => 'about']);
+    $routes->connect('/contact', ['controller' => 'Pages', 'action' => 'contact']);
+    $routes->connect('/about', ['controller' => 'Pages', 'action' => 'about']);
+    $routes->connect('/cart', ['controller' => 'Pages', 'action' => 'cart']);
+    $routes->connect('/login', ['controller' => 'Pages', 'action' => 'login']);
+    $routes->connect('/register', ['controller' => 'Pages', 'action' => 'register']);
     $routes->fallbacks(DashedRoute::class);
 });
 Router::scope('/admin', function ($routes) {
