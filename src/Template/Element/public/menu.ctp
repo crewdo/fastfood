@@ -1,8 +1,12 @@
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="1034712506855-lt18obb9emd1fdvu1vh8csh86gc7fka6.apps.googleusercontent.com">
+
 	<div class="header">
 		<div class="top-header navbar navbar-default"><!--header-one-->
 			<div class="container">
 				<div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
-					<p>Thiên đường ăn uống<a href="register.html">Đăng ký </a> Hoặc <a href="signin.html">Đăng nhập </a></p>
+					<p>Thiên đường ăn uống<a href="register.html">Đăng ký </a> Hoặc <!-- <a href="signin.html">Đăng nhập </a></p> -->
+					  <div class="g-signin2" data-onsuccess="onSignIn" data-longtitle="true" data-prompt="select_account">Sign in</div>
 				</div>
 				<div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
 					<ul>
@@ -278,3 +282,48 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		 window.onbeforeunload = function(e){
+        gapi.auth2.getAuthInstance().signOut();
+        };
+        // $('.signup').hide();
+
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            var a = profile.getEmail();
+            var b = profile.getImageUrl();
+            var c = profile.getName();
+            var id_token = googleUser.getAuthResponse().id_token;
+
+
+            $.post("/googlelogin", {
+                    name: a,
+                    img: b,
+                    ggname: c,
+                    token: id_token
+                },
+                function(data, status) {
+                    if (status == 'success') {
+                        if (data == 1) {
+                                // window.location.href = "/";
+                                alert('hehe');
+
+                        }
+                        else
+                        {
+                        	alert('fail');
+                        }
+                        //  else {
+                        //     $('.signup').show();
+
+
+                        //     $('#signupname').val(c);
+                        //     $('#signupemail').val(a);
+
+
+                        // }
+                    }
+                });
+        }
+	</script>

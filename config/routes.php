@@ -47,9 +47,9 @@ Router::defaultRouteClass(DashedRoute::class);
 
 
 Router::prefix('admin', function ($routes) {
-          $routes->connect('/', ['prefix' => 'admin','controller' => 'Admin', 'action' => 'index']);
-           $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
-            $routes->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+        $routes->connect('/', ['prefix' => 'admin','controller' => 'Admin', 'action' => 'index']);
+        $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
+        $routes->connect('/users/login', ['controller' => 'Users', 'action' => 'login']);
 
         $routes->connect('/customers/', ['controller' => 'Customers', 'action' => 'index']);
         $routes->connect('/customers/add', ['controller' => 'Customers', 'action' => 'add']);
@@ -90,7 +90,7 @@ Router::scope('/', function ($routes) {
     $routes->connect('/about', ['controller' => 'Home', 'action' => 'about']);
     $routes->connect('/contact', ['controller' => 'Home', 'action' => 'contact']);
     $routes->connect('/cart', ['controller' => 'Home', 'action' => 'cart']);
-    $routes->connect('/login', ['controller' => 'Home', 'action' => 'login']);
+    $routes->connect('/googlelogin', ['controller' => 'Home', 'action' => 'loginGoogle']);
     $routes->connect('/register', ['controller' => 'Home', 'action' => 'register']);
     $routes->fallbacks(DashedRoute::class);
 });
