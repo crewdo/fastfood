@@ -47,3 +47,13 @@ th.sorting:after{
 th.sorting_desc:after, th.sorting_asc:after{
     content: '' !important;
 }
+.delete_image{
+    margin-top:5px;
+}
+select.form-control:not([size]):not([multiple]){
+    height: auto !important;
+}
+.custom-control-description{
+        padding-top: 3px;
+    display: inline-block;
+}
