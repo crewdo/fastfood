@@ -14,6 +14,7 @@ class ProductImagesController extends AppController
 {
   public function index()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $this->paginate = ['limit' => ROW_LIMIT,
          'order' => array(
             'id' => 'desc'
@@ -35,6 +36,7 @@ class ProductImagesController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $image = $this->Images->get($id, [
             'contain' => ['FootBanners']
         ]);
@@ -118,6 +120,7 @@ if ($uploadOk == 0) {
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $image = $this->Images->get($id, [
             'contain' => []
         ]);

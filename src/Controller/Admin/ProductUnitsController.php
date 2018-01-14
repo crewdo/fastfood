@@ -20,6 +20,7 @@ class ProductUnitsController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $productUnits = $this->paginate($this->ProductUnits);
 
         $this->set(compact('productUnits'));
@@ -35,6 +36,7 @@ class ProductUnitsController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $productUnit = $this->ProductUnits->get($id, [
             'contain' => []
         ]);
@@ -50,6 +52,7 @@ class ProductUnitsController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $productUnit = $this->ProductUnits->newEntity();
         if ($this->request->is('post')) {
             $productUnit = $this->ProductUnits->patchEntity($productUnit, $this->request->getData());
@@ -73,6 +76,7 @@ class ProductUnitsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $productUnit = $this->ProductUnits->get($id, [
             'contain' => []
         ]);

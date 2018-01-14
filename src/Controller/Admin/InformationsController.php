@@ -20,6 +20,7 @@ class InformationsController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $informations = $this->paginate($this->Informations);
 
         $this->set(compact('informations'));
@@ -35,6 +36,7 @@ class InformationsController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $information = $this->Informations->get($id, [
             'contain' => []
         ]);
@@ -50,6 +52,7 @@ class InformationsController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $information = $this->Informations->newEntity();
         if ($this->request->is('post')) {
             $information = $this->Informations->patchEntity($information, $this->request->getData());
@@ -73,6 +76,7 @@ class InformationsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $information = $this->Informations->get($id, [
             'contain' => []
         ]);

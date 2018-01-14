@@ -12,9 +12,9 @@
         <li><?= $this->Html->link(__('New Product'), ['controller' => 'Products', 'action' => 'add']) ?></li>
     </ul>
 </nav>
-<div class="productImages index large-9 medium-8 columns content">
+<div class="images view large-9 medium-8 columns content">
     <h3><?= __('Product Images') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <table cellpadding="0" cellspacing="0" class="vertical-table">
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>

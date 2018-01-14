@@ -43,8 +43,21 @@
 				<ul>
 					<li><?= $this->Html->link('All products',['controller' => 'Products', 'action' => 'index']); ?> </li>
 					<li><?= $this->Html->link('Add new',['controller' => 'Products', 'action' => 'add']); ?></li>
-					<li><?= $this->Html->link('Categories',['controller' => 'Categories', 'action' => 'index']); ?></li>
+				
+					<li><?= $this->Html->link('Product Unit',['controller' => 'ProductUnits', 'action' => 'index']); ?></li>
 					<li><a href="#">Tags</a></li>
+				</ul>
+			</li>
+			<li class="with-sub">
+				<a class="waves-effect  waves-light">
+					<span class="s-caret"><i class="fa fa-angle-down"></i></span>
+					<span class="s-icon"><i class="fa fa-money"></i></span>
+					<span class="s-text">Categories</span>
+				</a>
+				<ul>
+
+					<li><?= $this->Html->link('All Categories',['controller' => 'ProductCategories', 'action' => 'index']); ?></li>
+					<li><?= $this->Html->link('Add new',['controller' => 'ProductCategories', 'action' => 'add']); ?></li>
 				</ul>
 			</li>
 			<li class="with-sub">
@@ -54,9 +67,9 @@
 					<span class="s-text">Order</span>
 				</a>
 				<ul>
-					<li><a href="#">All order</a></li>
-					<li><a href="#">All invoices</a></li>
-					<li><a href="#">Add new</a></li>
+
+					<li><?= $this->Html->link('All orders','/admin/orders',['class' => '', 'escape'=>false]); ?></li>
+					<li><?= $this->Html->link('Add new','/admin/orders/add',['class' => '', 'escape'=>false]); ?></li>
 				</ul>
 			</li>
 			<li class="with-sub">
@@ -66,8 +79,8 @@
 					<span class="s-text">Customers</span>
 				</a>
 				<ul>
-					<li><a href="#">All customers</a></li>
-					<li><a href="#">Add new</a></li>
+					<li><?= $this->Html->link('All customers','/admin/customers',['class' => '', 'escape'=>false]); ?></li>
+					<li><?= $this->Html->link('Add new','/admin/customers/add',['class' => '', 'escape'=>false]); ?></li>
 				</ul>
 			</li>
 			<li class="with-sub">

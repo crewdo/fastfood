@@ -3,7 +3,7 @@
 							<div class="navbar-left">
 						<a class="navbar-brand" href="index.html">
 							<div class="logo">
-								<img src="img/favicon.ico" class="img-reponsive" width="100%">
+								<img src="/public/images/favicon.ico" class="img-reponsive" width="100%">
 							</div>
 							<span class="site-title">Fastfoody</span>
 						</a>

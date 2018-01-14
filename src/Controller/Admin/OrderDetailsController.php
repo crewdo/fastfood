@@ -20,6 +20,7 @@ class OrderDetailsController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $this->paginate = [
             'contain' => ['Orders', 'Products']
         ];
@@ -38,6 +39,7 @@ class OrderDetailsController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $orderDetail = $this->OrderDetails->get($id, [
             'contain' => ['Orders', 'Products']
         ]);
@@ -53,6 +55,7 @@ class OrderDetailsController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $orderDetail = $this->OrderDetails->newEntity();
         if ($this->request->is('post')) {
             $orderDetail = $this->OrderDetails->patchEntity($orderDetail, $this->request->getData());
@@ -78,6 +81,7 @@ class OrderDetailsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $orderDetail = $this->OrderDetails->get($id, [
             'contain' => []
         ]);
@@ -105,6 +109,7 @@ class OrderDetailsController extends AppController
      */
     public function delete($id = null)
     {
+        
         $this->request->allowMethod(['post', 'delete']);
         $orderDetail = $this->OrderDetails->get($id);
         if ($this->OrderDetails->delete($orderDetail)) {

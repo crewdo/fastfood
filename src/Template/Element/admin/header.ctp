@@ -7,7 +7,6 @@
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
 		<meta name="description" content="">
 		<meta name="author" content="">
-		 <link rel="icon" type="image/x-icon" href="favicon.ico" /> 
 		<?= $this->Html->meta(
 			'favicon.ico',
 			'/public/images/favicon.ico',

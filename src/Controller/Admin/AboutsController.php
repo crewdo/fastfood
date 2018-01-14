@@ -20,6 +20,7 @@ class AboutsController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $abouts = $this->paginate($this->Abouts);
 
         $this->set(compact('abouts'));
@@ -35,6 +36,7 @@ class AboutsController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $about = $this->Abouts->get($id, [
             'contain' => []
         ]);
@@ -50,6 +52,7 @@ class AboutsController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $about = $this->Abouts->newEntity();
         if ($this->request->is('post')) {
             $about = $this->Abouts->patchEntity($about, $this->request->getData());
@@ -73,6 +76,7 @@ class AboutsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $about = $this->Abouts->get($id, [
             'contain' => []
         ]);

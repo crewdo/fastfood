@@ -20,6 +20,7 @@ class CustomersController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $customers = $this->paginate($this->Customers);
 
         $this->set(compact('customers'));
@@ -35,6 +36,7 @@ class CustomersController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $customer = $this->Customers->get($id, [
             'contain' => ['Orders']
         ]);
@@ -50,6 +52,7 @@ class CustomersController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $customer = $this->Customers->newEntity();
         if ($this->request->is('post')) {
             $customer = $this->Customers->patchEntity($customer, $this->request->getData());
@@ -73,6 +76,7 @@ class CustomersController extends AppController
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $customer = $this->Customers->get($id, [
             'contain' => []
         ]);

@@ -20,6 +20,7 @@ class FootBannersController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $footBanners = $this->paginate($this->FootBanners);
 
         $this->set(compact('footBanners'));
@@ -35,6 +36,7 @@ class FootBannersController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $footBanner = $this->FootBanners->get($id, [
             'contain' => []
         ]);
@@ -50,6 +52,7 @@ class FootBannersController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $footBanner = $this->FootBanners->newEntity();
         if ($this->request->is('post')) {
             $footBanner = $this->FootBanners->patchEntity($footBanner, $this->request->getData());
@@ -73,6 +76,7 @@ class FootBannersController extends AppController
      */
     public function edit($id = null)
     {
+        $this->viewBuilder()->layout('admin/admin');
         $footBanner = $this->FootBanners->get($id, [
             'contain' => []
         ]);
