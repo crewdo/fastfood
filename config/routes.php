@@ -41,44 +41,74 @@ use Cake\Routing\Route\DashedRoute;
  * `:action` markers.
  *
  */
+
 Router::defaultRouteClass(DashedRoute::class);
 
-Router::scope('/', function (RouteBuilder $routes) {
-    $routes->connect('/', ['controller' => 'Public', 'action' => 'index']);
-    $routes->connect('/product', ['controller' => 'Public', 'action' => 'product']);
-    $routes->connect('/products', ['controller' => 'Public', 'action' => 'products']);
-    $routes->connect('/check-out', ['controller' => 'Public', 'action' => 'checkOut']);
-    $routes->connect('/about', ['controller' => 'Pages', 'action' => 'about']);
-    $routes->connect('/contact', ['controller' => 'Pages', 'action' => 'contact']);
-    $routes->connect('/about', ['controller' => 'Pages', 'action' => 'about']);
-    $routes->connect('/cart', ['controller' => 'Pages', 'action' => 'cart']);
-    $routes->connect('/login', ['controller' => 'Pages', 'action' => 'login']);
-    $routes->connect('/register', ['controller' => 'Pages', 'action' => 'register']);
+Router::prefix('admin', function ($routes) {
+              $routes->connect('/', ['prefix' => 'admin','controller' => 'Admin', 'action' => 'index']);
+               $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
+               // products
+        $routes->connect('/products/', ['controller' => 'Products', 'action' => 'index']);
+        $routes->connect('/products/add', ['controller' => 'Products', 'action' => 'add']);
+        $routes->connect('/products/edit', ['controller' => 'Products', 'action' => 'edit']);
+        $routes->connect('/products/delete', ['controller' => 'Products', 'action' => 'delete']);
+
+         $routes->connect('/orders/', ['controller' => 'Products', 'action' => 'index']);
+        $routes->connect('/orders/add', ['controller' => 'Products', 'action' => 'add']);
+        $routes->connect('/orders/edit', ['controller' => 'Products', 'action' => 'edit']);
+        $routes->connect('//orders/delete', ['controller' => 'Products', 'action' => 'delete']);
+        $routes->fallbacks(DashedRoute::class);
+
+        $routes->connect('/images/', ['controller' => 'Images', 'action' => 'index']);
+        $routes->connect('/images/add', ['controller' => 'Images', 'action' => 'add']);
+        $routes->connect('/images/edit', ['controller' => 'Images', 'action' => 'edit']);
+        $routes->connect('/images/delete', ['controller' => 'Images', 'action' => 'delete']);
+
+
+});
+
+Router::scope('/', function ($routes) {
+      $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
+    $routes->connect('/product/{id}', ['controller' => 'Home', 'action' => 'product']);
+    $routes->connect('/products', ['controller' => 'Home', 'action' => 'products']);
+    $routes->connect('/check-out', ['controller' => 'Home', 'action' => 'checkOut']);
+    $routes->connect('/about', ['controller' => 'Home', 'action' => 'about']);
+    $routes->connect('/contact', ['controller' => 'Home', 'action' => 'contact']);
+    $routes->connect('/cart', ['controller' => 'Home', 'action' => 'cart']);
+    $routes->connect('/login', ['controller' => 'Home', 'action' => 'login']);
+    $routes->connect('/register', ['controller' => 'Home', 'action' => 'register']);
     $routes->fallbacks(DashedRoute::class);
 });
-Router::scope('/admin', function ($routes) {
-    $routes->connect('/', ['controller' => 'Admin', 'action' => 'index']);
-    $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
-    $routes->connect('/users/view/*&*', ['controller' => 'Users', 'action' => 'index']);
-    $routes->connect('/categories', ['controller' => 'ProductCategories', 'action' => 'index']);
-     $routes->fallbacks(DashedRoute::class);
-});    
+// Router::scope('/admin', function ($routes) {
+//     $routes->connect('/', ['controller' => 'Admin', 'action' => 'index']);
+//     $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
+//     $routes->connect('/users/view/*&*', ['controller' => 'Users', 'action' => 'index']);
+//     $routes->connect('/categories', ['controller' => 'ProductCategories', 'action' => 'index']);
+//      $routes->fallbacks(DashedRoute::class);
+// });    
 
-    Router::scope('admin/images/', function ($routes) {
-        $routes->connect('/', ['controller' => 'Images', 'action' => 'index']);
-        $routes->connect('add', ['controller' => 'Images', 'action' => 'add']);
-        $routes->connect('edit', ['controller' => 'Images', 'action' => 'edit']);
-        $routes->connect('delete', ['controller' => 'Images', 'action' => 'delete']);
-        $routes->fallbacks(DashedRoute::class);
-    });
+//     Router::scope('admin/images/', function ($routes) {
+//         $routes->connect('/', ['controller' => 'Images', 'action' => 'index']);
+//         $routes->connect('add', ['controller' => 'Images', 'action' => 'add']);
+//         $routes->connect('edit', ['controller' => 'Images', 'action' => 'edit']);
+//         $routes->connect('delete', ['controller' => 'Images', 'action' => 'delete']);
+//         $routes->fallbacks(DashedRoute::class);
+//     });
 
-        Router::scope('admin/products/', function ($routes) {
-        $routes->connect('/', ['controller' => 'Products', 'action' => 'index']);
-        $routes->connect('add', ['controller' => 'Products', 'action' => 'add']);
-        $routes->connect('edit', ['controller' => 'Products', 'action' => 'edit']);
-        $routes->connect('delete', ['controller' => 'Products', 'action' => 'delete']);
-        $routes->fallbacks(DashedRoute::class);
-    });
+//         Router::scope('admin/products/', function ($routes) {
+//         $routes->connect('/', ['controller' => 'Products', 'action' => 'index']);
+//         $routes->connect('add', ['controller' => 'Products', 'action' => 'add']);
+//         $routes->connect('edit', ['controller' => 'Products', 'action' => 'edit']);
+//         $routes->connect('delete', ['controller' => 'Products', 'action' => 'delete']);
+//         $routes->fallbacks(DashedRoute::class);
+//     });
+//             Router::scope('admin/orders/', function ($routes) {
+//         $routes->connect('/', ['controller' => 'Products', 'action' => 'index']);
+//         $routes->connect('add', ['controller' => 'Products', 'action' => 'add']);
+//         $routes->connect('edit', ['controller' => 'Products', 'action' => 'edit']);
+//         $routes->connect('delete', ['controller' => 'Products', 'action' => 'delete']);
+//         $routes->fallbacks(DashedRoute::class);
+//     });
 
     // Router::scope('admin/categories/', function ($routes) {
     

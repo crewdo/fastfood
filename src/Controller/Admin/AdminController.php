@@ -1,6 +1,7 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\Admin;
 use App\Controller\AppController;
+
 /**
  * Users Controller
  *
@@ -8,8 +9,9 @@ use App\Controller\AppController;
  *
  * @method \App\Model\Entity\User[] paginate($object = null, array $settings = [])
  */
-class PublicController extends AppController
+class AdminController extends AppController
 {
+
     /**
      * Index method
      *
@@ -17,43 +19,19 @@ class PublicController extends AppController
      */
     public function index()
     {
-        $this->loadModel('Products');
-        $this->viewBuilder()->layout('public/public');
-        $products = $this->paginate($this->Products);
-        $this->set(compact('products'));
+        // $this->loadModel('Products');
+        $this->viewBuilder()->layout('admin/admin');
+        // $products = $this->paginate($this->Products);
+        // $this->set(compact('products'));
         // $head_banner = $this->paginate($this->HeadBanners);
         // $foot_banner = $this->paginate($this->FootBanners);
         // $infomations = $this->paginate($this->Infomations);
-        
         // $this->set(compact('head_banner'));
         // $this->set(compact('foot_banner'));
         // $this->set(compact('infomations'));
+
     }
 
-        public function contact()
-    {
-        $this->loadModel('Products');
-        $this->viewBuilder()->layout('public/public');
-        $products = $this->paginate($this->Products);
-        $this->set(compact('products'));
-        // $head_banner = $this->paginate($this->HeadBanners);
-        // $foot_banner = $this->paginate($this->FootBanners);
-        // $infomations = $this->paginate($this->Infomations);
-        
-        // $this->set(compact('head_banner'));
-        // $this->set(compact('foot_banner'));
-        // $this->set(compact('infomations'));
-    }
-
-     public function about()
-    {
-        $this->loadModel('Products');
-        $this->viewBuilder()->layout('public/public');
-        $products = $this->paginate($this->Products);
-        $this->set(compact('products'));
-    }
-
-    /**
     /**
      * View method
      *
@@ -66,9 +44,11 @@ class PublicController extends AppController
         $user = $this->Users->get($id, [
             'contain' => []
         ]);
+
         $this->set('user', $user);
         $this->set('_serialize', ['user']);
     }
+
     /**
      * Add method
      *
@@ -81,6 +61,7 @@ class PublicController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
@@ -88,6 +69,7 @@ class PublicController extends AppController
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
+
     /**
      * Edit method
      *
@@ -104,6 +86,7 @@ class PublicController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
+
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
@@ -111,6 +94,7 @@ class PublicController extends AppController
         $this->set(compact('user'));
         $this->set('_serialize', ['user']);
     }
+
     /**
      * Delete method
      *
@@ -127,6 +111,7 @@ class PublicController extends AppController
         } else {
             $this->Flash->error(__('The user could not be deleted. Please, try again.'));
         }
+
         return $this->redirect(['action' => 'index']);
     }
 }
