@@ -143,7 +143,6 @@ class ProductsController extends AppController
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
 
         }
-     
         $this->set(['productImages' => $productImages, 'unit'=>$productUnits, 'productCategories' => $productCategories]);
         $this->set(compact('product'));
         $this->set('_serialize', ['product']);
