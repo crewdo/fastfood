@@ -2,7 +2,8 @@
 
     <div class="col-md-12 box box-block bg-white">
     <h3><?= __('Products') ?></h3>
-    <table  class="table table-striped table-bordered dataTable vertical-table" id="table_1" cellpadding="0" cellspacing="0">
+    <?= $this->Html->link('Add new', ['controller' => 'Products', 'action' => 'add'], ['class'=>'btn btn-primary']) ?>
+    <table  class="table table-striped table-bordered dataTable vertical-table" id="table_1" cellpadding="0" cellspacing="0" style="margin-top:10px">
         <thead>
             <tr>
                 <th scope="col" text-algin="center">ID</th>
@@ -18,7 +19,12 @@
         <tbody>
             <?php foreach ($products as $product): ?>
             <tr>
-                <td><?= $this->Number->format($product->id) ?></td>
+                <td> <?= $this->Html->link(
+                            $product->id,
+                             array('action'=>'edit', $product->id),
+                             array('class'=>'','id'=>'', 'escape' => false)
+                            ) ?>
+                        </td>
                 <td><?= $product->has('product_category') ? $this->Html->link($product->product_category->name, ['controller' => 'ProductCategories', 'action' => 'edit', $product->product_category->id]) : '' ?></td>
                 <td><?= $product->status ? 'Còn' : 'Hết'; ?></td>
                 <td><?= h($product->name) ?></td>

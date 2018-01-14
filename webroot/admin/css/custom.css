@@ -57,3 +57,38 @@ select.form-control:not([size]):not([multiple]){
         padding-top: 3px;
     display: inline-block;
 }
+.fearure-image{
+    margin: auto;
+
+}
+.more-image img{
+    margin-right: 15px;
+}
+.hide{
+    display: none;
+}
+.product-img{
+    position: relative;
+    display: inline-block;
+}
+.product-img button{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border:1px solid #f59345;
+    background-color: transparent;
+}
+.product-img button.cancel{
+    position: relative;
+    left: unset;
+    top: 0;
+    transform: unset;
+    border: 1px solid #f59345;
+    background-color: #f59345;
+    margin-top: 10px;
+    display: block;
+    }
+#fearure-image{
+    border:2px solid #f59345;
+}
