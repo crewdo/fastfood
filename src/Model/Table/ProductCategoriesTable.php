@@ -61,10 +61,6 @@ class ProductCategoriesTable extends Table
             ->requirePresence('parent', 'create')
             ->notEmpty('parent');
 
-        $validator
-            ->requirePresence('sort_order', 'create')
-            ->notEmpty('sort_order');
-
         return $validator;
     }
 }
