@@ -20,6 +20,7 @@ class ProductCategoriesController extends AppController
      */
     public function index()
     {
+        $this->viewBuilder()->layout('admin/admin');
         $productCategories = $this->paginate($this->ProductCategories);
 
         $this->set(compact('productCategories'));

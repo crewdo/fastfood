@@ -52,6 +52,7 @@ Router::scope('/admin', function ($routes) {
     $routes->connect('/', ['controller' => 'Admin', 'action' => 'index']);
     $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
     $routes->connect('/users/view/*&*', ['controller' => 'Users', 'action' => 'index']);
+    $routes->connect('/categories', ['controller' => 'ProductCategories', 'action' => 'index']);
      $routes->fallbacks(DashedRoute::class);
 });    
 
@@ -70,6 +71,12 @@ Router::scope('/admin', function ($routes) {
         $routes->connect('delete', ['controller' => 'Products', 'action' => 'delete']);
         $routes->fallbacks(DashedRoute::class);
     });
+
+    // Router::scope('admin/categories/', function ($routes) {
+    
+    //     $routes->fallbacks(DashedRoute::class);
+    // });
+
 
 
 
