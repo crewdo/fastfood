@@ -2,6 +2,7 @@
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
 
 /**
  * Users Controller
@@ -108,4 +109,49 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+
+      public function login()
+    {
+          $this->viewBuilder()->layout("");
+          if($this->Auth->user('id'))
+            {
+                
+                return $this->redirect(['controller'=>'Admin', 'action'=>'index']);
+            } 
+        
+        if($this->request->is('post'))
+        {   
+            $user = $this->Auth->identify();
+            if($user)
+            {
+                $this->Auth->setUser($user);
+                return $this->redirect(['controller'=>'Products', 'action'=>'index']);
+            }
+        
+            
+        }
+    }
+
+     public function beforeFilter(Event $event){
+        $this->Auth->Allow(['login']);
+        $session = $this->request->session();
+        // $a = $session->read('Auth.user.email');
+        // if($a != null)
+        // {
+        // $this->Auth->Allow(['logout']);
+        // }
+        return parent::beforeFilter($event);
+
+    }
+
+
+    public function logout()
+    {
+        $this->viewBuilder()->layout("");
+        $this->request->session()->destroy();
+        return $this->redirect($this->Auth->logout());
+    }
+
+
 }

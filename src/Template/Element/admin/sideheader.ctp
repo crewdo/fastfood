@@ -131,7 +131,9 @@
 									</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="skins.html#"><i class="ti-help mr-0-5"></i> Help</a>
-									<a class="dropdown-item" href="skins.html#"><i class="ti-power-off mr-0-5"></i> Sign out</a>
+									<!-- <a class="dropdown-item" href="skins.html#"><i class="ti-power-off mr-0-5"></i> Sign out</a>
+									 -->
+									 <?= $this->Html->link('<i class="ti-power-off mr-0-5"></i> Sign out','/admin/logout',['class' => 'dropdown-item', 'escape'=>false]); ?>
 								</div>
 							</li>
 						</ul>
