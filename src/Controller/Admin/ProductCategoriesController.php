@@ -54,7 +54,7 @@ class ProductCategoriesController extends AppController
     {
         $this->viewBuilder()->layout('admin/admin');
         $productCategory = $this->ProductCategories->newEntity();
-        
+        $productParent = $this->ProductCategories->find()->where(['parent' => 0]);
         if ($this->request->is('post')) {
             $productCategory = $this->ProductCategories->patchEntity($productCategory, $this->request->getData());
             if ($this->ProductCategories->save($productCategory)) {
@@ -64,6 +64,7 @@ class ProductCategoriesController extends AppController
             }
             $this->Flash->error(__('The product category could not be saved. Please, try again.'));
         }
+        $this->set(['productParent'=> $productParent]);
         $this->set(compact('productCategory'));
         $this->set('_serialize', ['productCategory']);
     }
@@ -78,6 +79,7 @@ class ProductCategoriesController extends AppController
     public function edit($id = null)
     {
         $this->viewBuilder()->layout('admin/admin');
+        $productParent = $this->ProductCategories->find()->where(['parent' => 0]);
         $productCategory = $this->ProductCategories->get($id, [
             'contain' => []
         ]);
@@ -90,6 +92,7 @@ class ProductCategoriesController extends AppController
             }
             $this->Flash->error(__('The product category could not be saved. Please, try again.'));
         }
+         $this->set(['productParent'=> $productParent]);
         $this->set(compact('productCategory'));
         $this->set('_serialize', ['productCategory']);
     }

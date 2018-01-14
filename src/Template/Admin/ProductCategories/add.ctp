@@ -13,7 +13,7 @@
 </ol>
 <div class="col-md-12 box box-block bg-white">
 <div class="productCategories form large-9 medium-8 columns content">
-    <?= $this->Form->create($productCategory, ['class' => 'form-material material-primary', 'enctype' => 'multipart/form-data']) ?>
+    <?= $this->Form->create($productCategory, ['class' => 'form-material material-danger', 'enctype' => 'multipart/form-data']) ?>
     <fieldset>
         <legend><?= __('Add Product Category') ?></legend>
 
@@ -26,10 +26,14 @@
               <div class="form-group row">
                   <label for="parent" class="col-sm-2 col-form-label">Parent</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="parent" name="parent" required>
+                    <select name="parent" class="form-control">
+                      <option value="0">Không parent</option>
+                     <?php foreach ($productParent as $key => $value) {
+                       echo '<option value="'.$value->id.'">'.$value->name.'</option>';
+                     } ?>
+                    </select>
                   </div>
            </div>
-
     </fieldset>
   <?= $this->Form->button(__('Lưu'), ['class'=>'btn btn-primary']) ?>
     <?= $this->Form->end() ?>
