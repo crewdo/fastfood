@@ -31,17 +31,22 @@ class HomeController extends AppController
     {
         $this->viewBuilder()->layout('public/public');
         $this->loadModel('Products');
-         $this->loadModel('Informations');
-          $this->loadModel('FootBanners');
-           $this->loadModel('HeadBanners');
-            $this->loadModel('ProductCategories');
+        $this->loadModel('Informations');
+        $this->loadModel('FootBanners');
+        $this->loadModel('HeadBanners');
+        $this->loadModel('ProductCategories');
         // $products = $this->Products->find()->contain(['ProductImages']);
         $categories = $this->ProductCategories->find();
+        $categories2 = $this->ProductCategories->find();
         $head_banner = $this->HeadBanners->find();
         $products = $this->Products->find();
         $foot_banner = $this->FootBanners->find();
         $informations = $this->Informations->find();
-        $this->set(['head_banner' => $head_banner,'foot_banner' => $foot_banner, 'products' => $products, 'infomations' => $informations, 'categories' => $categories]);
+
+        //Load Discount Categories
+        $id_discounts = $this->Products->find()->select(['category_id'])->where(['discount >' => 0 ]);
+
+        $this->set(['head_banner' => $head_banner,'foot_banner' => $foot_banner, 'products' => $products, 'infomations' => $informations, 'categories' => $categories, 'categories2' => $categories2, 'id_discounts' => $id_discounts ]);
     }
         public function loginGoogle()
     {         
