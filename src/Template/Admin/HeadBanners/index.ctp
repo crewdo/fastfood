@@ -4,25 +4,26 @@
  * @var \App\Model\Entity\HeadBanner[]|\Cake\Collection\CollectionInterface $headBanners
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Head Banner'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
+<div class="content-area py-1">
+    <div class="container-fluid">
+    <ol class="breadcrumb no-bg mb-1">
+       <li class="breadcrumb-item"><?= $this->Html->link(__('Home'), '/admin/') ?></li>
+      <li class="breadcrumb-item active">List Header Banners</li>
+    </ol>
+
+ <div class="col-md-12 box box-block bg-white">
 <div class="headBanners index large-9 medium-8 columns content">
-    <h3><?= __('Head Banners') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+    <h3><?= __('Head Header Banner') ?></h3>
+    <?= $this->Html->link('New Header Banner', ['action' => 'add'], ['class'=>'btn btn-primary mgb-10']) ?>
+    <table class="table table-striped table-bordered dataTable vertical-table" id="table_1" cellpadding="0" cellspacing="0" style="margin-top:10px">
         <thead>
             <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('title_st') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('title_nd') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('start_special_date') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('end__special_date') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('image') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
+                <th scope="col">ID</th>
+                <th scope="col">Tiêu đề 1</th>
+                <th scope="col">Tiêu đề 2</th>
+                <th scope="col">Ngày bắt đầu</th>
+                <th scope="col">Ngày kết thúc</th>
+                <th scope="col">Image link</th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -35,25 +36,24 @@
                 <td><?= h($headBanner->start_special_date) ?></td>
                 <td><?= h($headBanner->end__special_date) ?></td>
                 <td><?= h($headBanner->image) ?></td>
-                <td><?= h($headBanner->created) ?></td>
-                <td><?= h($headBanner->modified) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $headBanner->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $headBanner->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $headBanner->id], ['confirm' => __('Are you sure you want to delete # {0}?', $headBanner->id)]) ?>
+                                  <?= $this->Html->link(
+                            $this->Html->tag('i','&nbsp',array('class'=>'ti-pencil edit-icon')),
+                             array('action'=>'edit', $headBanner->id),
+                             array('class'=>'','id'=>'', 'escape' => false)
+                            ) ?>
+
+                 <?= $this->Form->postLink(
+                     $this->Html->tag('i', '', array('class' => 'ti-trash delete-icon')), 
+                     ['action' => 'delete', $headBanner->id],
+                    ['confirm' => __('Are you sure you want to delete # {0}?', $headBanner->id), 'escape'=>false]) ?>
+    
                 </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
-    </div>
+</div>
+</div>
+</div>
 </div>

@@ -3,12 +3,15 @@
  * @var \App\View\AppView $this
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Foot Banners'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
+<div class="content-area py-1">
+    <div class="container-fluid">
+
+<ol class="breadcrumb no-bg mb-1">
+<li class="breadcrumb-item"><?= $this->Html->link(__('Home'), ['controller' => 'Admin', 'action' => 'index']) ?></li>
+<li class="breadcrumb-item"><?= $this->Html->link(__('List Product Units'), ['action' => 'index']) ?></li>
+<li class="breadcrumb-item active">Add product Unit</li>
+</ol>
+<div class="box box-block bg-white">
 <div class="footBanners form large-9 medium-8 columns content">
     <?= $this->Form->create($footBanner) ?>
     <fieldset>
@@ -21,4 +24,7 @@
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
+</div>
+</div>
+</div>
 </div>

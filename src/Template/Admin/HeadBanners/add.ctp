@@ -3,24 +3,60 @@
  * @var \App\View\AppView $this
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Head Banners'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
+<div class="content-area py-1">
+    <div class="container-fluid">
+
+<ol class="breadcrumb no-bg mb-1">
+<li class="breadcrumb-item"><?= $this->Html->link(__('Home'), '/admin/') ?></li>
+<li class="breadcrumb-item"><?= $this->Html->link(__('List Header Banners'), ['action' => 'index']) ?></li>
+<li class="breadcrumb-item active">Add Header Banner</li>
+</ol>
+<div class="col-md-12 box box-block bg-white">
 <div class="headBanners form large-9 medium-8 columns content">
     <?= $this->Form->create($headBanner) ?>
     <fieldset>
         <legend><?= __('Add Head Banner') ?></legend>
-        <?php
-            echo $this->Form->control('title_st');
-            echo $this->Form->control('title_nd');
-            echo $this->Form->control('start_special_date', ['empty' => true]);
-            echo $this->Form->control('end__special_date', ['empty' => true]);
-            echo $this->Form->control('image');
-        ?>
+                <div class="form-group row">
+                  <label  class="col-sm-2 col-form-label">Tiêu đề 1</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="title_st" name="title_st" required>
+                  </div>
+           </div>
+                    <div class="form-group row">
+                  <label  class="col-sm-2 col-form-label">Tiêu đề 2</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="title_nd" name="title_nd" required>
+                  </div>
+           </div>
+                    <div class="form-group row">
+                  <label for="start_special_date" class="col-sm-2 col-form-label">Ngày bắt đầu </label>
+                  <div class="col-sm-10">
+                    <div class="input-group">
+                                <input type="text" class="form-control datepicker" placeholder="mm/dd/yyyy" name="start_special_date">
+                                <span class="input-group-addon"><i class="fa fa-calendar-o"></i></span>
+                              </div>
+                  </div>
+           </div>
+                        <div class="form-group row">
+                  <label for="end__special_date" class="col-sm-2 col-form-label">Ngày kết thúc </label>
+                  <div class="col-sm-10">
+                        <div class="input-group">
+                                <input type="text" class="form-control datepicker" placeholder="mm/dd/yyyy" name="end__special_date">
+                                <span class="input-group-addon"><i class="fa fa-calendar-o"></i></span>
+                              </div>
+                  </div>
+           </div>
+         <div class="form-group row">
+              <label for="" class="col-sm-2">Ảnh</label>
+               <div class="col-md-6">
+                <input type="file" id="input-file-now" class="dropify" name="image" required />
+             </div>
+           
+            </div>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+     <?= $this->Form->button(__('Lưu'), ['class'=>'btn btn-primary']) ?>
     <?= $this->Form->end() ?>
+</div>
+</div>
+</div>
 </div>
