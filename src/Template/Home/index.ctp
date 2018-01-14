@@ -4,20 +4,31 @@
                 <h3 class="title">Món Mới <span>cùng FastFoody</span></h3>
                 <p>Ăn uống thỏa chí, giá cá max hợp lý </p>
             </div>
+            <?php
+            foreach ($new_products as $pro) {
+               
+             ?>
             <div class="new-info">
                 <div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" data-wow-delay=".5s">
                     <div class="new-top">
-                        <a href="single.html"><img src="images/g9.jpg" class="img-responsive" alt=""/></a>
+                        <a href="/products/<?php echo $pro->id ?>"><img src="/img/products/<?php  foreach ($products_images as $img)
+                        {
+    if($img->product_id == $pro->id)
+    {
+        echo $img->link;
+    }
+    }
+    ?>" class="img-responsive" alt=""/></a>
                         <div class="new-text">
                             <ul>
                                 <li><a class="item_add" href=""> Thêm vào Giỏ</a></li>
-                                <li><a href="single.html">Xem Nhanh </a></li>
-                                <li><a href="products.html">Chi Tiết </a></li>
+                                <li><a href="#">Xem Nhanh </a></li>
+                                <li><a href="/products/<?php echo $pro->id ?>">Chi Tiết </a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="new-bottom">
-                        <h5><a class="name" href="single.html">Combo 1 </a></h5>
+                        <h5><a class="name" href="/products/<?php echo $pro->id ?>"><?php echo $pro->name ?></a></h5>
                         <div class="rating">
                             <span class="on">☆</span>
                             <span class="on">☆</span>
@@ -26,87 +37,16 @@
                             <span>☆</span>
                         </div>  
                         <div class="ofr">
-                            <p class="pric1"><del>25.000đ </del></p>
-                            <p><span class="item_price">15.000đ</span></p>
+                            <p class="pric1"><del><?php echo $pro->price ?></del></p>
+                            <p><span class="item_price"><?php $new_price = $pro->price*(100 - $pro->discount); echo $new_price ?></span></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 new-grid new-mdl simpleCart_shelfItem wow flipInY animated" data-wow-delay=".7s">
-                    <div class="new-top">
-                        <a href="single.html"><img src="images/g10.jpg" class="img-responsive" alt=""/></a>
-                        <div class="new-text">
-                            <ul>
-                                <li><a class="item_add" href=""> Thêm vào Giỏ</a></li>
-                                <li><a href="single.html">Xem Nhanh </a></li>
-                                <li><a href="products.html">Chi Tiết </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="new-bottom">
-                        <h5><a class="name" href="single.html">Chả Giò </a></h5>
-                        <div class="rating">
-                            <span class="on">☆</span>
-                            <span class="on">☆</span>
-                            <span class="on">☆</span>
-                            <span class="on">☆</span>
-                            <span>☆</span>
-                        </div>  
-                        <div class="ofr">
-                            <p><span class="item_price">20.000đ</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 new-grid new-mdl1 simpleCart_shelfItem wow flipInY animated" data-wow-delay=".9s">
-                    <div class="new-top">
-                        <a href="single.html"><img src="images/g11.jpg" class="img-responsive" alt=""/></a>
-                        <div class="new-text">
-                            <ul>
-                                <li><a class="item_add" href=""> Thêm vào Giỏ</a></li>
-                                <li><a href="single.html">Xem Nhanh </a></li>
-                                <li><a href="products.html">Chi Tiết </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="new-bottom">
-                        <h5><a class="name" href="single.html">Bò, Cá, Tôm </a></h5>
-                        <div class="rating">
-                            <span class="on">☆</span>
-                            <span class="on">☆</span>
-                            <span class="on">☆</span>
-                            <span class="on">☆</span>
-                            <span>☆</span>
-                        </div>  
-                        <div class="ofr">
-                            <p><span class="item_price">30.000đ</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" data-wow-delay="1.1s">
-                    <div class="new-top">
-                        <a href="single.html"><img src="images/g12.jpg" class="img-responsive" alt=""/></a>
-                        <div class="new-text">
-                            <ul>
-                                <li><a class="item_add" href=""> Thêm vào Giỏ</a></li>
-                                <li><a href="single.html">Xem Nhanh </a></li>
-                                <li><a href="products.html">Chi Tiết </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="new-bottom">
-                        <h5><a class="name" href="single.html">Combo 2</a></h5>
-                        <div class="rating">
-                            <span class="on">☆</span>
-                            <span class="on">☆</span>
-                            <span class="on">☆</span>
-                            <span class="on">☆</span>
-                            <span>☆</span>
-                        </div>  
-                        <div class="ofr">
-                            <p class="pric1"><del>60.000đ</del></p>
-                            <p><span class="item_price">40.000đ</span></p>
-                        </div>
-                    </div>
-                </div>
+          </div>
+
+          <?php 
+      } 
+      ?>
                 <div class="clearfix"> </div>
             </div>
         </div>

@@ -31,6 +31,7 @@ class HomeController extends AppController
     {
         $this->viewBuilder()->layout('public/public');
         $this->loadModel('Products');
+        $this->loadModel('ProductImages');
         $this->loadModel('Informations');
         $this->loadModel('FootBanners');
         $this->loadModel('HeadBanners');
@@ -43,10 +44,15 @@ class HomeController extends AppController
         $foot_banner = $this->FootBanners->find();
         $informations = $this->Informations->find();
 
+
+        //New 4 Foods
+        $new_products = $this->Products->find()->order(['created' => 'DESC'])->limit(4);
+        $products_images = $this->ProductImages->find()->where(['ProductImages.feature =' => 1]);
+
         //Load Discount Categories
         $id_discounts = $this->Products->find()->select(['category_id'])->where(['discount >' => 0 ]);
 
-        $this->set(['head_banner' => $head_banner,'foot_banner' => $foot_banner, 'products' => $products, 'infomations' => $informations, 'categories' => $categories, 'categories2' => $categories2, 'id_discounts' => $id_discounts ]);
+        $this->set(['head_banner' => $head_banner,'foot_banner' => $foot_banner, 'products' => $products, 'infomations' => $informations, 'categories' => $categories, 'categories2' => $categories2, 'id_discounts' => $id_discounts, 'new_products' => $new_products, 'products_images' =>  $products_images ]);
     }
         public function loginGoogle()
     {         
