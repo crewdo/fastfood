@@ -1,4 +1,9 @@
 <div class="products form large-9 medium-8 columns content col-md-12 box box-block bg-white">
+  <div class="alert alert-success alert-dismissable">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong><?= $this->Flash->render('addProduct') ?></strong> 
+</div>
+
     <?= $this->Form->create(null, ['class' => 'form-material material-primary', 'enctype' => 'multipart/form-data'])  ?>
     <fieldset>
         <legend><?= __('Add Product') ?></legend>
@@ -7,10 +12,10 @@
           <div class="form-group row">
                   <label for="name" class="col-sm-2 col-form-label">Tên món ăn</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="name" required>
                   </div>
                 </div>
-                         <div class="form-group row">
+                  <div class="form-group row">
                  <label for="" class="col-sm-2 col-form-label">Loại sản phẩm</label>
                  <div class="col-sm-10">
                  <select name="category_id" class="form-control" >
@@ -33,7 +38,7 @@
                  <div class="form-group row">
                   <label for="price" class="col-sm-2 col-form-label">Giá bán</label>
                   <div class="col-sm-10">
-                    <input type="number" class="form-control" id="price" name="price">
+                    <input type="number" class="form-control" id="price" name="price" required>
                   </div>
                 </div>
                 <div class="form-group row">
@@ -57,7 +62,38 @@
               </label>
              </div>
           </div>
-      
+          <div class="form-group row">
+                 <label for="discount" class="col-sm-2 col-form-label">Hot</label>
+                 <div class="col-sm-10">
+                 <label class="custom-control custom-radio col-sm-4">
+                <input name="hot" type="radio" class="custom-control-input" value="1">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Có</span>
+              </label>
+                 <label class="custom-control custom-radio col-sm-6">
+                <input  name="hot" type="radio" class="custom-control-input" value="0" checked>
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Không</span>
+              </label>
+             </div>
+    
+                </div>
+                      <div class="form-group row">
+                     <label for="discount" class="col-sm-2 col-form-label">Đặc biệt</label>
+                         <div class="col-sm-10">
+                 <label class="custom-control custom-radio col-sm-4">
+                <input name="special" type="radio" class="custom-control-input" value="1">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Có</span>
+              </label>
+                       <label class="custom-control custom-radio col-sm-6">
+                <input name="special" type="radio" class="custom-control-input" value="0" checked>
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Không</span>
+              </label>
+             </div>
+    
+                </div>
    
 
       
@@ -69,34 +105,20 @@
                       <textarea cols="40" rows="5" name="content" class="form-control"></textarea>
                     </div>
                   </div>
-              <div class="form-group row">
-                 <label for="discount" class="col-sm-2 custom-control-description">Hot</label>
-                  <div class="col-sm-10">
-                <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" value="1" name="hot">
-                <span class="custom-control-indicator"></span>
-             <span class="custom-control-description"></span>
-              </label>
-            </div>     
-                </div>
-                <div class="form-group row">
-                 <label for="discount" class="col-sm-2 custom-control-description">Đặc biệt</label>
-                  <div class="col-sm-10">
-                <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" value="1" name="special">
-                <span class="custom-control-indicator"></span>
-             <span class="custom-control-description"></span>
-              </label>
-            </div>     
-             </div> 
+          
               <div class="form-group row">
               <label for="" class="col-sm-2">Ảnh đại diện</label>
                <div class="col-md-6">
-                <input type="file" id="input-file-now" class="dropify" name="main_image"/>
+                <input type="file" id="input-file-now" class="dropify" name="main_image" required />
              </div>
-             <button type="button" class="btn btn-success" id="more-image">More images</button>
+           
             </div>
             <div class="form-group row more-image"></div>
+             <div class="form-group row">
+                <button type="button" class="btn btn-success" id="more-image">More images</button>
+             </div>
+             
+            </fieldset>
 
             <?php
             echo $this->Form->hidden('review_number', ['name'=>'review_number', 'value'=> 0]);

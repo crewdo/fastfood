@@ -64,85 +64,56 @@ class ProductsController extends AppController
         $this->loadModel('ProductImages');
          $this->loadModel('ProductUnits');
          $this->loadModel('ProductCategories');
-        $product = $this->Products->newEntity();
-        if ($this->request->is('post')) {
-            $product = $this->Products->patchEntity($product, $this->request->getData());
-                $id_need = $this->Products->save($product);
-                $this->Flash->success(__('The product has been saved.'));
-
-                // return $this->redirect(['action' => 'add']);
-                $product_id_create = $id_need->id;
-            }
-            else
-            $this->Flash->error(__('The product could not be saved. Please, try again.'));
 
         $productCategories = $this->Products->ProductCategories->find();
         $productUnits = $this->ProductUnits->find();
         $this->set(compact('product'));
         $this->set(['unit'=> $productUnits, 'productCategories'=> $productCategories ]);
+        // save
+         $product = $this->Products->newEntity();
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+             $product = $this->Products->newEntity([
+                'category_id' =>$data['category_id'],
+                'status' =>$data['status'],
+                'name' =>$data['name'],
+                'unit_id' =>$data['unit_id'],
+                'price' =>$data['price'],
+                'content' =>$data['content'],
+                'discount' =>$data['discount'],
+                'hot' => $data['hot'],
+                'special' =>$data['special'],
+                'review_number' =>$data['review_number'],
+                'review' =>$data['review'],
+                'hot' =>$data['hot'],
+             ]);
+                $id_need = $this->Products->save($product);
+              if ($id_need) {
+                $this->Flash->success( 'The product has been saved.', ['key' => 'addProduct']);
+                 if (!empty($_FILES)) {
+                foreach ($_FILES as $key => $value) {
+                        if($key == "main_image")
+                        {
+                            $upload = $this->uploadImage($value,$id_need->id, 1);
 
+                        }
+                        else
+                             $upload = $this->uploadImage($value,$id_need->id, 0);
+                       if($upload != 'success')
+                        $this->Flash->error($upload);
+                    }
+
+
+                } 
+                return $this->redirect(['action' => 'add']);
+            }
+           else $this->Flash->error(__('The product could not be saved. Please, try again.'));
             // echo 'hahaha';
+     
 
-            if (!empty($_FILES["link"]["name"])) {
-            $target_dir = WWW_ROOT . 'img/';
-            $target_file = $target_dir . basename($_FILES["link"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-            // Check if image file is a actual image or fake image
-            if(isset($_POST["submit"])) {
-            $check = getimagesize($_FILES["link"]["tmp_name"]);
-            if($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
-                $uploadOk = 1;
-            } else {
-                echo "File is not an image.";
-                $uploadOk = 0;
-            }
-            }
-            // Check if file already exists
-            // if (file_exists($target_file)) {
-            //     $this->Flash->error('Sorry, file already exists.');
-            //     $uploadOk = 0;
-            // }
-            // Check file size
-            // if ($_FILES["link"]["size"] > 500000) {
-            //     echo "Sorry, your file is too large.";
-            //     $uploadOk = 0;
-            // }
-            // Allow certain file formats
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif" ) {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
-            }
-            // Check if $uploadOk is set to 0 by an error
-            if ($uploadOk == 0) {
-            $this->Flash->error('Sorry, your file was not uploaded.');
-            // if everything is ok, try to upload file
-            } else {
-            if (move_uploaded_file($_FILES["link"]["tmp_name"], $target_file)) {
-                $image = $this->ProductImages->newEntity();
-                // $image = $this->Images->patchEntity($image, $this->request->data);
-                $image->link = basename($_FILES["link"]["name"]);
-                $image->product_id = $product_id_create;
-                $image->feature = 1;
-                // var_dump($image);
-                if ($this->ProductImages->save($image)) {
-
-                    $this->Flash->success('The image has been saved.');
-                     return $this->redirect(['action' => 'index']);
-                } else {
-                    $this->Flash->error('The image could not be saved. Please, try again.');
-                }
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-            }
-
-            }
-
-      
-    }
+       
+}
+ }
 
     /**
      * Edit method
@@ -154,6 +125,12 @@ class ProductsController extends AppController
     public function edit($id = null)
     {
         $this->viewBuilder()->layout('admin/admin');
+        $this->loadModel('ProductImages');
+          $this->loadModel('ProductUnits');
+         $this->loadModel('ProductCategories');
+        $productCategories = $this->Products->ProductCategories->find();
+        $productUnits = $this->ProductUnits->find();
+        $productImages = $this->ProductImages->find()->where(['product_id' => $id])->all();
         $product = $this->Products->get($id, [
             'contain' => []
         ]);
@@ -161,16 +138,14 @@ class ProductsController extends AppController
             $product = $this->Products->patchEntity($product, $this->request->getData());
             if ($this->Products->save($product)) {
                 $this->Flash->success(__('The product has been saved.'));
-
                 // return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
 
         }
-        $productCategories = $this->Products->ProductCategories->find('list', ['limit' => ROW_LIMIT]);
-        $this->set(compact('product', 'productCategories'));
-        $productUnits = $this->Products->ProductUnits->find('list', ['limit' => ROW_LIMIT]);
-        $this->set(compact('unit', 'productUnits'));
+     
+        $this->set(['productImages' => $productImages, 'unit'=>$productUnits, 'productCategories' => $productCategories]);
+        $this->set(compact('product'));
         $this->set('_serialize', ['product']);
     }
 
@@ -192,5 +167,46 @@ class ProductsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    public function  uploadImage($file, $product_id, $feature){
+     if (!empty($file["name"])) {
+            $target_dir = WWW_ROOT . 'img/products/';
+            $target_file = $target_dir . basename($file["name"]);
+            $uploadOk = 1;
+            $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+            // Check if image file is a actual image or fake image
+            $check = getimagesize($file["tmp_name"]);
+            if($check !== false) {
+                $uploadOk = 1;
+            } else {
+                return "File is not an image.";
+                $uploadOk = 0;
+            }
+
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif" ) {
+            return "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+            }
+            if ($uploadOk == 0) {
+            $this->Flash->error('Sorry, your file was not uploaded.');
+            } else {
+            if (move_uploaded_file($file["tmp_name"], $target_file)) {
+                $image = $this->ProductImages->newEntity();
+                $image->link = '/img/products/'.$file["tmp_name"];
+                $image->product_id = $product_id;
+                $image->feature = $feature;
+                // var_dump($image);
+                if ($this->ProductImages->save($image)) {
+                     return "success";
+                } else {
+                    return 'fail';
+                }
+            } else {
+                return "Sorry, there was an error uploading your file.";
+            }
+            }
+
+            }
     }
 }

@@ -13,6 +13,25 @@
     <?= $this->Form->create($productCategory) ?>
     <fieldset>
         <legend><?= __('Add Product Category') ?></legend>
+
+          <div class="form-group row">
+                  <label for="name" class="col-sm-2 col-form-label">Tên món ăn</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" name="name" required>
+                  </div>
+           </div>
+              <div class="form-group row">
+                  <label for="name" class="col-sm-2 col-form-label">Tên món ăn</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" name="name" required>
+                  </div>
+           </div>
+            <div class="form-group row">
+                  <label for="name" class="col-sm-2 col-form-label">Tên món ăn</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="name" name="name" required>
+                  </div>
+           </div>
         <?php
             echo $this->Form->control('name');
             echo $this->Form->control('parent');
