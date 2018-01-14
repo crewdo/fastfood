@@ -13,7 +13,7 @@
 
  <div class="col-md-12 box box-block bg-white">
 <div class="headBanners index large-9 medium-8 columns content">
-    <h3><?= __('Head Header Banner') ?></h3>
+    <h3><?= __('Header Banner') ?></h3>
     <?= $this->Html->link('New Header Banner', ['action' => 'add'], ['class'=>'btn btn-primary mgb-10']) ?>
     <table class="table table-striped table-bordered dataTable vertical-table" id="table_1" cellpadding="0" cellspacing="0" style="margin-top:10px">
         <thead>

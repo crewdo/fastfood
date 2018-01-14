@@ -73,6 +73,7 @@ class ProductsController extends AppController
          $product = $this->Products->newEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
+             // var_dump($this->request->getData());
              $product = $this->Products->newEntity([
                 'category_id' =>$data['category_id'],
                 'status' =>$data['status'],
@@ -94,11 +95,11 @@ class ProductsController extends AppController
                 foreach ($_FILES as $key => $value) {
                         if($key == "main_image")
                         {
-                            $upload = $this->uploadImage($value,$id_need->id, 1);
+                            $upload = $this->uploadProductImage($value,$id_need->id, 1);
 
                         }
                         else
-                             $upload = $this->uploadImage($value,$id_need->id, 0);
+                             $upload = $this->uploadProductImage($value,$id_need->id, 0);
                        if($upload != 'success')
                         $this->Flash->error($upload);
                     }
@@ -135,15 +136,31 @@ class ProductsController extends AppController
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+
             $product = $this->Products->patchEntity($product, $this->request->getData());
             if ($this->Products->save($product)) {
-                $this->Flash->success(__('The product has been saved.'));
-                // return $this->redirect(['action' => 'index']);
+                $this->Flash->success( 'The product has been saved.', ['key' => 'editProduct']);
+                 if (!empty($_FILES)) {
+                foreach ($_FILES as $key => $value) {
+                        if($key == "main_image")
+                        {
+
+                            $upload = $this->uploadProductImage($value,$id_need->id, 1);
+                            // remove old image get file from 
+                            // unlink('path/to/file.jpg');
+                        }
+                        else
+                             $upload = $this->uploadProductImage($value,$id_need->id, 0);
+                       if($upload != 'success')
+                        $this->Flash->error($upload);
+                    }
             }
             $this->Flash->error(__('The product could not be saved. Please, try again.'));
 
         }
-        $this->set(['productImages' => $productImages, 'unit'=>$productUnits, 'productCategories' => $productCategories]);
+        
+    }
+    $this->set(['productImages' => $productImages, 'unit'=>$productUnits, 'productCategories' => $productCategories]);
         $this->set(compact('product'));
         $this->set('_serialize', ['product']);
     }
@@ -167,32 +184,12 @@ class ProductsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-    public function  uploadImage($file, $product_id, $feature){
-     if (!empty($file["name"])) {
-            $target_dir = WWW_ROOT . 'img/products/';
-            $target_file = $target_dir . basename($file["name"]);
-            $uploadOk = 1;
-            $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-            // Check if image file is a actual image or fake image
-            $check = getimagesize($file["tmp_name"]);
-            if($check !== false) {
-                $uploadOk = 1;
-            } else {
-                return "File is not an image.";
-                $uploadOk = 0;
-            }
 
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif" ) {
-            return "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-            $uploadOk = 0;
-            }
-            if ($uploadOk == 0) {
-            $this->Flash->error('Sorry, your file was not uploaded.');
-            } else {
-            if (move_uploaded_file($file["tmp_name"], $target_file)) {
+    public function  uploadProductImage($file, $product_id, $feature){
+       $res = $this->Functions->uploadImage($file, 'img/products/');
+       if($res['status'] == 'success'){
                 $image = $this->ProductImages->newEntity();
-                $image->link = '/img/products/'.$file["tmp_name"];
+                $image->link = $res['data'];
                 $image->product_id = $product_id;
                 $image->feature = $feature;
                 // var_dump($image);
@@ -201,11 +198,6 @@ class ProductsController extends AppController
                 } else {
                     return 'fail';
                 }
-            } else {
-                return "Sorry, there was an error uploading your file.";
-            }
-            }
-
-            }
+       }
     }
 }

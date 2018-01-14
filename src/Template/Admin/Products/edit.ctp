@@ -1,3 +1,11 @@
+<div class="content-area py-1">
+    <div class="container-fluid">
+
+<ol class="breadcrumb no-bg mb-1">
+<li class="breadcrumb-item"><?= $this->Html->link(__('Home'), ['controller' => 'Admin', 'action' => 'index']) ?></li>
+<li class="breadcrumb-item"><?= $this->Html->link(__('List Produtcs'), ['action' => 'index']) ?></li>
+<li class="breadcrumb-item active">Edit product</li>
+</ol>
 <div class="products form large-9 medium-8 columns content col-md-12 box box-block bg-white">
     <?= $this->Form->create($product,['class' => 'form-material material-success', 'enctype' => 'multipart/form-data']) ?>
     <fieldset>
@@ -127,3 +135,5 @@
        <?= $this->Form->button(__('Lưu'), ['class'=>'btn btn-primary']) ?>
     <?= $this->Form->end() ?>
   </div>
+</div>
+</div>

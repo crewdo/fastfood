@@ -7,50 +7,49 @@ use Cake\Controller\Controller;
 
 class FunctionsComponent extends Component
 {
-  public function  uploadProductImage($image, $dir = 'img'){
+    public function test(){
+        return 'hihi';
+    }
+  public function  uploadImage($image, $path = 'img'){
         $result = [
             'status' => 'fail',
             'link' => '',
             'message' =>''
         ];
      if (!empty($image["name"])) {
-            $target_dir = WWW_ROOT . $dir.DS;
+            $target_dir = WWW_ROOT . $path.DS;
             $target_file = $target_dir . basename($image["name"]);
             $uploadOk = 1;
             $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
             // Check if image file is a actual image or fake image
             $check = getimagesize($image["tmp_name"]);
             if($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
+                $result['message'] = "File is an image - " . $check["mime"] . ".";
                 $uploadOk = 1;
             } else {
-                echo "File is not an image.";
+                $result['message'] = 'File is not an image.';
                 $uploadOk = 0;
             }
-
             if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-             $result['message'] = 'Sorry, your file was not uploaded.';
+            $result['message'] = 'Sorry, only JPG, JPEG, PNG & GIF files are allowed.';
             $uploadOk = 0;
             }
 
-            if ($uploadOk == 0) {
-                $result['message'] = 'Sorry, your file was not uploaded.';
-
-            } else {
+            if ($uploadOk == 1) {
             if (move_uploaded_file($image["tmp_name"], $target_file)) {
                  $result['status'] = 'success';
-                $result['data'] = DS.$dir.$image["tmp_name"];
+                 $result['data'] = '/'.$path.$image["name"];
             } else {
-                return -1;
+                $result['message'] = 'can upload';
             }
             }
 
             }
-            else  $result['status'] = 'fail';
+            else   $result['message'] = 'empty';
+          return $result;
     }
-     return $result;
+   
 
 }
 ?>
