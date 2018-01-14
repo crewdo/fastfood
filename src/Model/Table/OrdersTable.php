@@ -75,6 +75,10 @@ class OrdersTable extends Table
             ->scalar('address')
             ->requirePresence('address', 'create')
             ->notEmpty('address');
+        $validator
+            ->scalar('phone')
+            ->requirePresence('phone', 'create')
+            ->allowEmpty('phone');
 
         $validator
             ->dateTime('ship_time')

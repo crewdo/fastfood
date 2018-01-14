@@ -5,8 +5,13 @@
 		<div class="top-header navbar navbar-default"><!--header-one-->
 			<div class="container">
 				<div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
-					<p>Thiên đường ăn uống<a href="register.html">Đăng ký </a> Hoặc <!-- <a href="signin.html">Đăng nhập </a></p> -->
-					  <div class="g-signin2" data-onsuccess="onSignIn" data-longtitle="true" data-prompt="select_account">Sign in</div>
+					
+ <div class="g-signin2" data-onsuccess="onSignIn" data-longtitle="true" data-prompt="select_account" <?= isset($_SESSION['id']) ? "style='display:none'" : "" ?>> </div>
+					  <div clas="info" <?php if(empty($_SESSION['id'])){ echo "style='display:none'"; } else echo "style= 'margin-bottom:8px; margin-top:8px'"; ?>>
+					  <img class="img-circle" height="30px" <?php echo "src='".$_SESSION['img']."'"; ?>>
+					  <span><?= isset($_SESSION['name']) ? $_SESSION['name'] : "" ?></span>
+					  &nbsp<a href="/logout">Đăng xuất</a>
+					</div>
 				</div>
 				<div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
 					<ul>
@@ -65,7 +70,7 @@
 					<!--navbar-header-->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav top-nav-info">
-							<li><a href="index.html" class="active">Trang chủ</a></li>
+							<li><a href="/" class="active">Trang chủ</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu chính<b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column multi-column1">
@@ -305,24 +310,9 @@
                 },
                 function(data, status) {
                     if (status == 'success') {
-                        if (data == 1) {
-                                // window.location.href = "/";
-                                alert('hehe');
-
-                        }
-                        else
-                        {
-                        	alert('fail');
-                        }
-                        //  else {
-                        //     $('.signup').show();
+                 		   window.location.href = "/";
 
 
-                        //     $('#signupname').val(c);
-                        //     $('#signupemail').val(a);
-
-
-                        // }
                     }
                 });
         }

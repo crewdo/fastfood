@@ -91,7 +91,7 @@ Router::scope('/', function ($routes) {
     $routes->connect('/contact', ['controller' => 'Home', 'action' => 'contact']);
     $routes->connect('/cart', ['controller' => 'Home', 'action' => 'cart']);
     $routes->connect('/googlelogin', ['controller' => 'Home', 'action' => 'loginGoogle']);
-    $routes->connect('/register', ['controller' => 'Home', 'action' => 'register']);
+    $routes->connect('/logout', ['controller' => 'Home', 'action' => 'logout']);
     $routes->fallbacks(DashedRoute::class);
 });
 
