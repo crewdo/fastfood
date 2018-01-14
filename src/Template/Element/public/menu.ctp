@@ -1,3 +1,4 @@
+        <?php var_dump($categories); ?>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <meta name="google-signin-client_id" content="1034712506855-lt18obb9emd1fdvu1vh8csh86gc7fka6.apps.googleusercontent.com">
 
@@ -75,7 +76,30 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu chính<b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column multi-column1">
 									<div class="row">
-										<div class="col-sm-4 menu-grids menulist1">
+									<?php 
+
+									foreach ($categories as $categorie) {
+										if($categorie->parent == 0)
+										{
+											echo "<div class='col-sm-2 menugrids'>";
+											echo "<h4>".$categorie->name."</h4>";
+											echo "<ul class='multi-column-dropdown'>";
+											foreach($categories  as $sub){
+												if($sub->parent == $categorie->id){
+													echo "<li><a class='list' href='/categories/".$sub->id."'>".$sub->name."</a></li>";
+												}
+											}
+										    echo "</ul> </div>";
+
+										}
+
+									}
+
+
+									?>
+
+
+									<!-- 	<div class="col-sm-2 menugrids">
 											<h4>Trái cây</h4>
 											<ul class="multi-column-dropdown ">
 												<li><a class="list" href="products.html">Xoài non</a></li>
@@ -85,6 +109,9 @@
 												<li><a class="list" href="products.html">Me</a></li>
 												<li><a class="list" href="products.html">Xoài chưa chín</a></li>
 											</ul>
+										</div>
+											<div class="col-sm-2 menu-grids">
+													<h4>Trái cây2</h4>
 											<ul class="multi-column-dropdown">
 											<li><a class="list" href="products.html">Xoài non</a></li>
 												<li><a class="list" href="products.html">Quýt ngọt</a></li>
@@ -137,7 +164,7 @@
 												<li><a class="list" href="products.html">Đậu viên</a></li>
 												<li><a class="list" href="products.html">Thịt viên</a></li>
 											</ul>
-										</div>
+										</div> -->
 										<div class="clearfix"> </div>
 									</div>
 								</ul>

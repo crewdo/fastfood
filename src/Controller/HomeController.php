@@ -30,13 +30,18 @@ class HomeController extends AppController
     public function index()
     {
         $this->viewBuilder()->layout('public/public');
-        $this->loadModel(['Products', 'Infomations', 'FootBanners', 'HeadBanners', 'ProductCategories']);
+        $this->loadModel('Products');
+         $this->loadModel('Informations');
+          $this->loadModel('FootBanners');
+           $this->loadModel('HeadBanners');
+            $this->loadModel('ProductCategories');
         // $products = $this->Products->find()->contain(['ProductImages']);
-        // $head_banner = $this->HeadBanners->find();
-        // $head_banner = $this->HeadBanners->find();
-        // $foot_banner = $this->FootBanners->find();
-        // $infomations = $this->Infomations->find();
-        // $this->set(['head_banner' => $head_banner,'foot_banner' => $foot_banner, 'products' => $products, 'products' => $products, 'infomations' => $infomations]);
+        $categories = $this->ProductCategories->find();
+        $head_banner = $this->HeadBanners->find();
+        $products = $this->Products->find();
+        $foot_banner = $this->FootBanners->find();
+        $informations = $this->Informations->find();
+        $this->set(['head_banner' => $head_banner,'foot_banner' => $foot_banner, 'products' => $products, 'infomations' => $informations, 'categories' => $categories]);
     }
         public function loginGoogle()
     {         
