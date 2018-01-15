@@ -73,10 +73,29 @@ Router::prefix('admin', function ($routes) {
         $routes->connect('/orders/edit', ['controller' => 'Orders', 'action' => 'edit']);
         $routes->connect('/orders/delete', ['controller' => 'Orders', 'action' => 'delete']);
 
+
+         $routes->connect('/orders/', ['controller' => 'Orders', 'action' => 'index']);
+        $routes->connect('/orders/add', ['controller' => 'Orders', 'action' => 'add']);
+        $routes->connect('/orders/edit', ['controller' => 'Orders', 'action' => 'edit']);
+        $routes->connect('/orders/delete', ['controller' => 'Orders', 'action' => 'delete']);
+
+
+         $routes->connect('/header-banners/', ['controller' => 'HeadBanners', 'action' => 'index']);
+        $routes->connect('/header-banner/add', ['controller' => 'HeadBanners', 'action' => 'add']);
+        $routes->connect('/header-banners/edit', ['controller' => 'HeadBanners', 'action' => 'edit']);
+        $routes->connect('/header-banner/delete', ['controller' => 'HeadBanners', 'action' => 'delete']);
+
+     $routes->connect('/footer-banners/', ['controller' => 'FootBanners', 'action' => 'index']);
+        $routes->connect('/footer-banner/add', ['controller' => 'FootBanners', 'action' => 'add']);
+        $routes->connect('/footer-banners/edit', ['controller' => 'FootBanners', 'action' => 'edit']);
+        $routes->connect('/footer-banner/delete', ['controller' => 'FootBanners', 'action' => 'delete']);
+
         $routes->connect('/images/', ['controller' => 'Images', 'action' => 'index']);
         $routes->connect('/images/add', ['controller' => 'Images', 'action' => 'add']);
         $routes->connect('/images/edit', ['controller' => 'Images', 'action' => 'edit']);
         $routes->connect('/images/delete', ['controller' => 'Images', 'action' => 'delete']);
+
+
         $routes->fallbacks(DashedRoute::class);
 
 

@@ -26,10 +26,9 @@
 					<span class="s-text">Home page</span>
 				</a>
 				<ul>
-					<li><a href="#">Header Banner</a></li>
-					<li><a href="#">Footer Banner</a></li>
-					<li><a href="#">New product</a></li>
-					<li><a href="#">Special product</a></li>
+					<li><?= $this->Html->link('Header Banner',['controller' => 'HeadBanners', 'action' => 'index']); ?></li>
+					<li><?= $this->Html->link('Footer Banner',['controller' => 'FootBanners', 'action' => 'index']); ?></li>
+
 				</ul>
 			</li>
 			<li class="menu-title">Manager</li>

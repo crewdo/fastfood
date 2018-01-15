@@ -55,11 +55,24 @@ class FootBannersController extends AppController
         $this->viewBuilder()->layout('admin/admin');
         $footBanner = $this->FootBanners->newEntity();
         if ($this->request->is('post')) {
-            $footBanner = $this->FootBanners->patchEntity($footBanner, $this->request->getData());
+                // save image
+         $data = $this->request->getData();
+           if (!empty($_FILES)) {
+          
+             $res = $this->Functions->uploadImage($_FILES['banner'], 'img/banners/');
+             var_dump($res['data']);
+                 if($res['status'] = 'success'){
+                    $footBanner->image = $res['data'];
+                 }
+                 else{
+                     $this->Flash->error($res['message']);
+                 }
+            }
+            $footBanner->title= $data['title'];
+            $footBanner->content = $data['content'];
             if ($this->FootBanners->save($footBanner)) {
                 $this->Flash->success(__('The foot banner has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
+                // return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The foot banner could not be saved. Please, try again.'));
         }
@@ -112,4 +125,5 @@ class FootBannersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
 }

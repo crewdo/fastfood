@@ -3,24 +3,17 @@
  * @var \App\View\AppView $this
  */
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $order->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $order->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Orders'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Customers'), ['controller' => 'Customers', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Customer'), ['controller' => 'Customers', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Order Details'), ['controller' => 'OrderDetails', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Order Detail'), ['controller' => 'OrderDetails', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
+<div class="content-area py-1">
+    <div class="container-fluid">
+
+<ol class="breadcrumb no-bg mb-1">
+<li class="breadcrumb-item"><?= $this->Html->link(__('Home'), ['controller' => 'Admin', 'action' => 'index']) ?></li>
+<li class="breadcrumb-item"><?= $this->Html->link(__('List Product Categories'), ['action' => 'index']) ?></li>
+<li class="breadcrumb-item active">Edit product Category</li>
+</ol>
+<div class="col-md-12 box box-block bg-white">
 <div class="orders form large-9 medium-8 columns content">
-    <?= $this->Form->create($order) ?>
+    <?= $this->Form->create($order,['class' => 'form-material material-danger']) ?>
     <fieldset>
         <legend><?= __('Edit Order') ?></legend>
         <?php
@@ -34,4 +27,7 @@
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
+</div>
+</div>
+</div>
 </div>

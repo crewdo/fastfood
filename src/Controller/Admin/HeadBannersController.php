@@ -20,6 +20,7 @@ class HeadBannersController extends AppController
      */
     public function index()
     {
+           $this->viewBuilder()->layout('admin/admin');
         $headBanners = $this->paginate($this->HeadBanners);
 
         $this->set(compact('headBanners'));
@@ -35,6 +36,7 @@ class HeadBannersController extends AppController
      */
     public function view($id = null)
     {
+           $this->viewBuilder()->layout('admin/admin');
         $headBanner = $this->HeadBanners->get($id, [
             'contain' => []
         ]);
@@ -50,12 +52,29 @@ class HeadBannersController extends AppController
      */
     public function add()
     {
+           $this->viewBuilder()->layout('admin/admin');
         $headBanner = $this->HeadBanners->newEntity();
         if ($this->request->is('post')) {
-            $headBanner = $this->HeadBanners->patchEntity($headBanner, $this->request->getData());
+            // $headBanner = $this->HeadBanners->patchEntity($headBanner, $this->request->getData());
+              var_dump($this->request->getData());
+              $data = $this->request->getData();
+           if (!empty($_FILES)) {
+          
+             $res = $this->Functions->uploadImage($_FILES['banner'], 'img/banners/');
+             var_dump($res);
+               if($res['status'] = 'success'){
+                 $headBanner->image = $res['data'];
+                 }
+                 else{
+                     $this->Flash->error($res['message']);
+                 }
+            }
+            $headBanner->title_st = $data['title_st'];
+            $headBanner->title_nd = $data['title_nd'];
+            $headBanner->start_special_date = $data['start_special_date'];
+            $headBanner->end_special_date = $data['end_special_date'];
             if ($this->HeadBanners->save($headBanner)) {
                 $this->Flash->success(__('The head banner has been saved.'));
-
                 return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error(__('The head banner could not be saved. Please, try again.'));
@@ -73,6 +92,7 @@ class HeadBannersController extends AppController
      */
     public function edit($id = null)
     {
+           $this->viewBuilder()->layout('admin/admin');
         $headBanner = $this->HeadBanners->get($id, [
             'contain' => []
         ]);
@@ -108,4 +128,5 @@ class HeadBannersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
 }

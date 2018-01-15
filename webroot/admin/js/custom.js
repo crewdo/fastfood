@@ -31,6 +31,9 @@ $(document).ready(function() {
     	parent.find('img').show();
     	parent.find('input[type=file]').hide();
     });
+                 $('.datepicker').datepicker({
+                    format: 'yyyy-mm-dd',
+                 });
 
 
 

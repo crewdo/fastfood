@@ -7,7 +7,7 @@
     <div class="container-fluid">
 
 <ol class="breadcrumb no-bg mb-1">
-<li class="breadcrumb-item"><?= $this->Html->link(__('Home'), ['controller' => 'Admin', 'action' => 'index']) ?></li>
+<li class="breadcrumb-item"><?= $this->Html->link(__('Home'), '/admin/') ?></li>
 <li class="breadcrumb-item"><?= $this->Html->link(__('List Product Categories'), ['action' => 'index']) ?></li>
 <li class="breadcrumb-item active">Add product Category</li>
 </ol>
