@@ -34,6 +34,18 @@ $(document).ready(function() {
                  $('.datepicker').datepicker({
                     format: 'yyyy-mm-dd',
                  });
+                $(document).on('change', '.product-img input[type=file]', function(event) {
+                    event.preventDefault();
+                    var parent = $(this).parent();
+
+                    // cut
+                    var link = $(this).val().split("\\").pop();
+                    parent.find('input[type=hidden]').val(link);
+                    console.log(link);
+                    /* Act on the event */
+                });
+                // ajax delete image
+
 
 
 

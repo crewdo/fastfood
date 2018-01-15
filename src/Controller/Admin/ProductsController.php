@@ -144,13 +144,18 @@ class ProductsController extends AppController
                 foreach ($_FILES as $key => $value) {
                         if($key == "main_image")
                         {
-
+                            $res = $this->Functions->uploadImage($file, 'img/products/');
+                            if($res['status'] == 'success'){
+                                
+                             }
                             $upload = $this->uploadProductImage($value,$id_need->id, 1);
                             // remove old image get file from 
                             // unlink('path/to/file.jpg');
                         }
-                        else
-                             $upload = $this->uploadProductImage($value,$id_need->id, 0);
+                        else{
+                              $upload = $this->uploadProductImage($value,$id_need->id, 0);
+                        }
+                           
                        if($upload != 'success')
                         $this->Flash->error($upload);
                     }
@@ -184,7 +189,9 @@ class ProductsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    public function editImage($file, $product_id, $feature){
 
+    }
     public function  uploadProductImage($file, $product_id, $feature){
        $res = $this->Functions->uploadImage($file, 'img/products/');
        if($res['status'] == 'success'){
