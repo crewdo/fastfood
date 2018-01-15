@@ -132,6 +132,8 @@ class ProductsController extends AppController
         $productCategories = $this->Products->ProductCategories->find();
         $productUnits = $this->ProductUnits->find();
         $productImages = $this->ProductImages->find()->where(['product_id' => $id])->all();
+        $feature_link = $this->ProductImages->find()->where(['product_id' => $id, 'feature' => '1']);
+          $feature_link = $feature_link->link;
         $product = $this->Products->get($id, [
             'contain' => []
         ]);
@@ -141,21 +143,26 @@ class ProductsController extends AppController
             if ($this->Products->save($product)) {
                 $this->Flash->success( 'The product has been saved.', ['key' => 'editProduct']);
                  if (!empty($_FILES)) {
+
                 foreach ($_FILES as $key => $value) {
+
                         if($key == "main_image")
                         {
                             $res = $this->Functions->uploadImage($file, 'img/products/');
                             if($res['status'] == 'success'){
-                                
+                               unlink($feature_link);
                              }
-                            $upload = $this->uploadProductImage($value,$id_need->id, 1);
+                            // $upload = $this->uploadProductImage($value,$id_need->id, 1);
                             // remove old image get file from 
-                            // unlink('path/to/file.jpg');
+                          
                         }
                         else{
+                               $res[] = $this->Functions->uploadImage($file, 'img/products/');
+                            if($res['status'] == 'success'){
+                                
+                             }
                               $upload = $this->uploadProductImage($value,$id_need->id, 0);
                         }
-                           
                        if($upload != 'success')
                         $this->Flash->error($upload);
                     }
