@@ -102,9 +102,9 @@ Router::prefix('admin', function ($routes) {
 });
 
 Router::scope('/', function ($routes) {
-      $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
-    $routes->connect('/product/{id}', ['controller' => 'Home', 'action' => 'product']);
-    $routes->connect('/products', ['controller' => 'Home', 'action' => 'products']);
+    $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
+    // $routes->connect('/product/{id}', ['controller' => 'Home', 'action' => 'product']);
+    
     $routes->connect('/check-out', ['controller' => 'Home', 'action' => 'checkOut']);
     $routes->connect('/about', ['controller' => 'Home', 'action' => 'about']);
     $routes->connect('/contact', ['controller' => 'Home', 'action' => 'contact']);
@@ -113,7 +113,9 @@ Router::scope('/', function ($routes) {
     $routes->connect('/logout', ['controller' => 'Home', 'action' => 'logout']);
     $routes->fallbacks(DashedRoute::class);
 });
-
+Router::scope('home', function ($routes){
+$routes->connect('/showProduct', ['controller' => 'Home', 'action' => 'showProduct']);
+});
 /**
  * Load all plugin routes. See the Plugin documentation on
  * how to customize the loading of plugin routes.

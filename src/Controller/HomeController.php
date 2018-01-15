@@ -143,14 +143,18 @@ class HomeController extends AppController
         $infomations = $this->Infomations->find();
         $this->set(['infomations' => $infomations]);
     }
-         public function products()
+         public function showProduct($id = null)
     {
-        $this->loadModel('Infomations');
+        $this->loadModel('Products');
+        $this->loadModel('ProductImages');
+           $this->loadModel('ProductCategories');
         $this->viewBuilder()->layout('public/public');
-        $infomations = $this->Infomations->find();
-        $this->set(['infomations' => $infomations]);
+        $categories = $this->ProductCategories->find();
+        $categories2 = $this->ProductCategories->find();
+        $product = $this->Products->get($id);
+        $this->set(['product' => $product, 'categories' => $categories, 'categories2' => $categories2]);
     }
-     public function product()
+     public function products()
     {
         $this->loadModel('Infomations');
         $this->viewBuilder()->layout('public/public');
@@ -174,7 +178,7 @@ public function checkOut()
     }
 
     public function beforeFilter(Event $event){
-        $this->Auth->Allow(['loginGoogle', 'register', 'contact', 'about', 'products', 'product', 'checkOut', 'cart','index', 'logout' ]);
+        $this->Auth->Allow(['showProduct','loginGoogle', 'register', 'contact', 'about', 'products', 'checkOut', 'cart','index', 'logout' ]);
         $session = $this->request->session();
         // $a = $session->read('Auth.user.email');
         // if($a != null)

@@ -13,7 +13,7 @@
           
                 <div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" data-wow-delay=".5s" style="margin-left: 5px">
                     <div class="new-top">
-                        <a href="/products/<?php echo $pro->id ?>"><img src="/img/products/<?php  foreach ($products_images as $img)
+                        <a href="/home/showProduct/<?php echo $pro->id ?>"><img src="/img/products/<?php  foreach ($products_images as $img)
                         {
                             if($img->product_id == $pro->id)
                             {
@@ -25,12 +25,12 @@
                             <ul>
                                 <li><a class="item_add" href=""> Thêm vào Giỏ</a></li>
                                 <li><a href="#">Xem Nhanh </a></li>
-                                <li><a href="/products/<?php echo $pro->id ?>">Chi Tiết </a></li>
+                                <li><a href="/home/showProduct/<?php echo $pro->id ?>">Chi Tiết </a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="new-bottom">
-                        <h5><a class="name" href="/products/<?php echo $pro->id ?>"><?php echo $pro->name ?></a></h5>
+                        <h5><a class="name" href="/home/showProduct/<?php echo $pro->id ?>"><?php echo $pro->name ?></a></h5>
                         <div class="rating">
                             <span class="on">☆</span>
                             <span class="on">☆</span>
@@ -67,7 +67,7 @@
                 {
                 ?>
                 <div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay=".5s" style="margin-right: 5px;">
-                    <a href="/products/<?php echo $good->product_id ?>"><img src="/img/products/<?php  foreach ($products_images as $img)
+                    <a href="/home/showProduct/<?php echo $good->product_id ?>"><img src="/img/products/<?php  foreach ($products_images as $img)
                         {
                             if($img->product_id == $good->product_id)
                             {
@@ -76,7 +76,7 @@
                             }
                             ?>" class="img-responsive" alt=""/></a>
                     <div class="gallery-text simpleCart_shelfItem">
-                        <h5><a class="name" href="/products/<?php echo $good->product_id ?>"><?php echo $good->product->name ?></a></h5> 
+                        <h5><a class="name" href="/home/showProduct/<?php echo $good->product_id ?>"><?php echo $good->product->name ?></a></h5> 
                         <p><span class="item_price"><?php echo $good->product->price ?></span></p>
                         <!-- <h4 class="sizes">Cỡ: <a href="#">m</a> - <a href="#">l</a> </h4> -->
                         <ul>
