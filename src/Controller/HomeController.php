@@ -36,6 +36,7 @@ class HomeController extends AppController
         $this->loadModel('FootBanners');
         $this->loadModel('HeadBanners');
         $this->loadModel('ProductCategories');
+         $this->loadModel('OrderDetails');
         // $products = $this->Products->find()->contain(['ProductImages']);
         $categories = $this->ProductCategories->find();
         $categories2 = $this->ProductCategories->find();
@@ -45,14 +46,35 @@ class HomeController extends AppController
         $informations = $this->Informations->find();
 
 
-        //New 4 Foods
+        //New 4 Products
         $new_products = $this->Products->find()->order(['created' => 'DESC'])->limit(4);
         $products_images = $this->ProductImages->find()->where(['ProductImages.feature =' => 1]);
+
+        //Ban chay Products
+       
+        // $good_products  = $this->OrderDetails->find('all', array(
+        //         'fields'=>'COUNT(*)', 
+        //         'group'=>'OrderDetails.product_id'
+        //         ));
+
+        $good_products = $this->OrderDetails->find('all');
+
+        $good_products->select([ 
+                          'product_id',
+                          'Products.name',
+                          'Products.price',
+                          'count' => $good_products->func()->count('*')
+                        ])
+                 ->contain(['Products'])
+                 ->group('product_id')
+
+                 ->order(['count'=> 'DESC'])
+                 ->limit(8);
 
         //Load Discount Categories
         $id_discounts = $this->Products->find()->select(['category_id'])->where(['discount >' => 0 ]);
 
-        $this->set(['head_banner' => $head_banner,'foot_banner' => $foot_banner, 'products' => $products, 'infomations' => $informations, 'categories' => $categories, 'categories2' => $categories2, 'id_discounts' => $id_discounts, 'new_products' => $new_products, 'products_images' =>  $products_images ]);
+        $this->set(['head_banner' => $head_banner,'foot_banner' => $foot_banner, 'products' => $products, 'infomations' => $informations, 'categories' => $categories, 'categories2' => $categories2, 'id_discounts' => $id_discounts, 'new_products' => $new_products, 'products_images' =>  $products_images, 'good_products'=>$good_products ]);
     }
         public function loginGoogle()
     {         

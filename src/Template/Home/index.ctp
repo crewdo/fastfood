@@ -1,24 +1,26 @@
+
  <div class="new">
         <div class="container">
             <div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
                 <h3 class="title">Món Mới <span>cùng FastFoody</span></h3>
                 <p>Ăn uống thỏa chí, giá cá max hợp lý </p>
             </div>
+              <div class="new-info">
             <?php
             foreach ($new_products as $pro) {
                
              ?>
-            <div class="new-info">
-                <div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" data-wow-delay=".5s">
+          
+                <div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" data-wow-delay=".5s" style="margin-left: 5px">
                     <div class="new-top">
                         <a href="/products/<?php echo $pro->id ?>"><img src="/img/products/<?php  foreach ($products_images as $img)
                         {
-    if($img->product_id == $pro->id)
-    {
-        echo $img->link;
-    }
-    }
-    ?>" class="img-responsive" alt=""/></a>
+                            if($img->product_id == $pro->id)
+                            {
+                                echo $img->link;
+                            }
+                            }
+                            ?>" class="img-responsive" alt=""/></a>
                         <div class="new-text">
                             <ul>
                                 <li><a class="item_add" href=""> Thêm vào Giỏ</a></li>
@@ -42,12 +44,13 @@
                         </div>
                     </div>
                 </div>
-          </div>
 
           <?php 
       } 
       ?>
-                <div class="clearfix"> </div>
+             
+          </div>
+   <div class="clearfix"> </div>
             </div>
         </div>
     </div>      
@@ -60,12 +63,22 @@
                 <p>Thỏa sức ăn vặt với FastFoody</p>
             </div>
             <div class="gallery-info">
-                <div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay=".5s">
-                    <a href="products.html"><img src="images/g1.jpg" class="img-responsive" alt=""/></a>
+                <?php  foreach($good_products as $good)
+                {
+                ?>
+                <div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay=".5s" style="margin-right: 5px;">
+                    <a href="/products/<?php echo $good->product_id ?>"><img src="/img/products/<?php  foreach ($products_images as $img)
+                        {
+                            if($img->product_id == $good->product_id)
+                            {
+                                echo $img->link;
+                            }
+                            }
+                            ?>" class="img-responsive" alt=""/></a>
                     <div class="gallery-text simpleCart_shelfItem">
-                        <h5><a class="name" href="single.html">Trà Sữa Trân Châu</a></h5>
-                        <p><span class="item_price">15.000đ</span></p>
-                        <h4 class="sizes">Cỡ: <a href="#">m</a> - <a href="#">l</a> </h4>
+                        <h5><a class="name" href="/products/<?php echo $good->product_id ?>"><?php echo $good->product->name ?></a></h5> 
+                        <p><span class="item_price"><?php echo $good->product->price ?></span></p>
+                        <!-- <h4 class="sizes">Cỡ: <a href="#">m</a> - <a href="#">l</a> </h4> -->
                         <ul>
                             <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
                             <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
@@ -73,97 +86,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-3 gallery-grid gallery-grid1 wow flipInY animated" data-wow-delay=".7s">
-                    <a href="products.html"><img src="images/g2.jpg" class="img-responsive" alt=""/></a>
-                    <div class="gallery-text simpleCart_shelfItem">
-                        <h5><a class="name" href="single.html">Trà Sữa Bạc Hà</h5>
-                        <p><span class="item_price">18.000đ</span></p>
-                        <h4 class="sizes">Cỡ: <a href="#">m</a> - <a href="#">l</a> </h4>
-                        <ul>
-                            <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                            <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 gallery-grid gallery-grid2 wow flipInY animated" data-wow-delay=".9s">
-                    <a href="products.html"><img src="images/g3.jpg" class="img-responsive" alt=""/></a>
-                    <div class="gallery-text simpleCart_shelfItem">
-                        <h5><a class="name" href="single.html">Trà Sữa Thạch </a></h5>
-                        <p><span class="item_price">20.000đ</span></p>
-                        <h4 class="sizes">Cỡ: <a href="#">m</a> - <a href="#">l</a> </h4>
-                        <ul>
-                            <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                            <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay="1.1s">
-                    <a href="products.html"><img src="images/g4.jpg" class="img-responsive" alt=""/></a>
-                    <div class="gallery-text simpleCart_shelfItem">
-                        <h5><a class="name" href="single.html">Trà Sữa Kem Bơ</a></h5>
-                        <p><span class="item_price">17.000đ</span></p>
-                        <h4 class="sizes">Cỡ: <a href="#">m</a> - <a href="#">l</a> </h4>
-                        <ul>
-                            <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                            <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay=".5s">
-                    <a href="products.html"><img src="images/g5.jpg" class="img-responsive" alt=""/></a>
-                    <div class="gallery-text simpleCart_shelfItem">
-                        <h5><a class="name" href="single.html">Da Heo Cháy Tỏi</a></h5>
-                        <p><span class="item_price">70.000đ</span></p>
-                        <h4 class="sizes">Cỡ: <a href="#">m</a> - <a href="#">l</a> </h4>
-                        <ul>
-                            <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                            <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 gallery-grid gallery-grid1 wow flipInY animated" data-wow-delay=".7s">
-                    <a href="products.html"><img src="images/g6.jpg" class="img-responsive" alt=""/></a>
-                    <div class="gallery-text simpleCart_shelfItem">
-                        <h5><a class="name" href="single.html">Bánh Tráng Trộn</a></h5>
-                        <p><span class="item_price">45.000đ</span></p>
-                        <h4 class="sizes">Cỡ: <a href="#">m</a> - <a href="#">l</a> </h4>
-                        <ul>
-                            <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                            <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 gallery-grid gallery-grid2 wow flipInY animated" data-wow-delay=".9s">
-                    <a href="products.html"><img src="images/g7.jpg" class="img-responsive" alt=""/></a>
-                    <div class="gallery-text simpleCart_shelfItem">
-                        <h5><a class="name" href="single.html">Khô Gà Lá Chanh</a></h5>
-                        <p><span class="item_price">70.000đ</span></p>
-                        <h4 class="sizes">Cỡ: <a href="#">m</a> - <a href="#">l</a> </h4>
-                        <ul>
-                            <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                            <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay="1.1s">
-                    <a href="products.html"><img src="images/g8.jpg" class="img-responsive" alt=""/></a>
-                    <div class="gallery-text simpleCart_shelfItem">
-                        <h5><a class="name" href="single.html">Khô Bò Sợi</a></h5>
-                        <p><span class="item_price">100.000đ</span></p>
-                        <h4 class="sizes">Cỡ: <a href="#">m</a> - <a href="#">l</a> </h4>
-                        <ul>
-                            <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                            <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
+              <?php 
+                 }
+              ?>
                 <div class="clearfix"></div>
             </div>
         </div>
