@@ -31,8 +31,8 @@
 			<div class="container">
 				<div class="nav navbar-nav header-two-left">
 					<ul>
-						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 890</li>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:FastFoody@gmail.com">FastFoody@gmail.com</a></li>			
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i><?php echo $information->phone?></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:<?php echo $information->email?>"><?php echo $information->email?></a></li>			
 					</ul>
 				</div>
 				<div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
@@ -40,11 +40,11 @@
 				</div>
 				<div class="nav navbar-nav navbar-right header-two-right">
 					<div class="header-right my-account">
-						<a href="contact.html"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Liên Hệ </a>						
+						<a href="contact"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Liên Hệ </a>						
 					</div>
 					<div class="header-right cart">
 						<a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-						<h4><a href="checkout.html">
+						<h4><a href="/cart">
 								<span class="simpleCart_total"> 0.00 VNĐ </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>) 
 						</a></h4>
 						<div class="cart-box">

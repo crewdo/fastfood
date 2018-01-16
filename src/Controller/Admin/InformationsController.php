@@ -22,7 +22,6 @@ class InformationsController extends AppController
     {
         $this->viewBuilder()->layout('admin/admin');
         $informations = $this->paginate($this->Informations);
-
         $this->set(compact('informations'));
         $this->set('_serialize', ['informations']);
     }
@@ -53,17 +52,20 @@ class InformationsController extends AppController
     public function add()
     {
         $this->viewBuilder()->layout('admin/admin');
+        $informations_i = $this->Informations->find()->first();
+
         $information = $this->Informations->newEntity();
         if ($this->request->is('post')) {
             $information = $this->Informations->patchEntity($information, $this->request->getData());
             if ($this->Informations->save($information)) {
                 $this->Flash->success(__('The information has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'add']);
             }
             $this->Flash->error(__('The information could not be saved. Please, try again.'));
         }
-        $this->set(compact('information'));
+        $this->set('information', $information);
+        $this->set('informations_i', $informations_i);
         $this->set('_serialize', ['information']);
     }
 
@@ -83,7 +85,7 @@ class InformationsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $information = $this->Informations->patchEntity($information, $this->request->getData());
             if ($this->Informations->save($information)) {
-                $this->Flash->success(__('The information has been saved.'));
+                $this->Flash->success(__('The information has been edited.'));
 
                 return $this->redirect(['action' => 'index']);
             }

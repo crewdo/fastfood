@@ -96,6 +96,12 @@ Router::prefix('admin', function ($routes) {
         $routes->connect('/images/delete', ['controller' => 'Images', 'action' => 'delete']);
 
 
+        $routes->connect('/informations/', ['controller' => 'informations', 'action' => 'add']);
+        $routes->connect('/information/add', ['controller' => 'informations', 'action' => 'add']);
+        $routes->connect('/information/edit', ['controller' => 'informations', 'action' => 'edit']);
+        $routes->connect('/information/delete', ['controller' => 'informations', 'action' => 'delete']);
+
+
         $routes->fallbacks(DashedRoute::class);
 
 

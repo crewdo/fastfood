@@ -43,6 +43,7 @@ class AboutsController extends AppController
 
         $this->set('about', $about);
         $this->set('_serialize', ['about']);
+        
     }
 
     /**

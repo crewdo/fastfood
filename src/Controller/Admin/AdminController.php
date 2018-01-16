@@ -25,10 +25,10 @@ class AdminController extends AppController
         // $this->set(compact('products'));
         // $head_banner = $this->paginate($this->HeadBanners);
         // $foot_banner = $this->paginate($this->FootBanners);
-        // $infomations = $this->paginate($this->Infomations);
+        // $informations = $this->paginate($this->informations);
         // $this->set(compact('head_banner'));
         // $this->set(compact('foot_banner'));
-        // $this->set(compact('infomations'));
+        // $this->set(compact('informations'));
 
     }
 

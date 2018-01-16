@@ -90,7 +90,7 @@
 			</li>
 			<li class="menu-title">More</li>
 			<li>
-				<a href="#" class="waves-effect  waves-light">
+				<a href="/admin/informations/" class="waves-effect  waves-light">
 					<span class="s-icon"><i class="fa fa-info"></i></span>
 					<span class="s-text">Informations</span>
 				</a>

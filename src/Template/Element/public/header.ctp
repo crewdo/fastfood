@@ -23,7 +23,6 @@ array('type'=>'icon')
 <?= $this->Html->css([
 '/public/css/bootstrap.css',
 '/public/css/style.css',
-'/public/css/flexslider.css',
 '/public/css/animate.min.css',
 '/public/css/custom.css',
 
@@ -56,6 +55,3 @@ array('type'=>'icon')
 	<!--header-->
 	<?= $this->Element('public/menu') ?>
 	<!--//header-->
-	<!--banner-->
-	<?= $this->Element('public/banner') ?>
-	<!--//banner-->

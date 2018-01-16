@@ -2,13 +2,13 @@
     <div class="container-fluid">
 
 <ol class="breadcrumb no-bg mb-1">
-<li class="breadcrumb-item"><?= $this->Html->link(__('Home'), ['controller' => 'Admin', 'action' => 'index']) ?></li>
-<li class="breadcrumb-item"><?= $this->Html->link(__('List Product Units'), ['action' => 'index']) ?></li>
-<li class="breadcrumb-item active">Add product Unit</li>
+<li class="breadcrumb-item"><?= $this->Html->link(__('Home'), '/admin/') ?></li>
+<li class="breadcrumb-item"><?= $this->Html->link(__('List Products'), ['action' => 'index']) ?></li>
+<li class="breadcrumb-item active">Add product</li>
 </ol>
 <div class="products form large-9 medium-8 columns content col-md-12 box box-block bg-white">
 
-<?= $this->Flash->render('addProduct') ?>
+<?= $this->Flash->render() ?>
 
     <?= $this->Form->create(null, ['class' => 'form-material material-primary', 'enctype' => 'multipart/form-data'])  ?>
     <fieldset>
@@ -20,7 +20,7 @@
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="name" name="name" required>
                   </div>
-                </div>
+           </div>
                   <div class="form-group row">
                  <label for="" class="col-sm-2 col-form-label">Loại sản phẩm</label>
                  <div class="col-sm-10">
@@ -119,17 +119,19 @@
              </div>
            
             </div>
+            <?php
+            echo $this->Form->hidden('review_number', ['name'=>'review_number', 'value'=> 0]);
+            echo $this->Form->hidden('review', ['name'=>'review', 'value'=> 0]);
+            ?>
             <div class="form-group row more-image"></div>
+
              <div class="form-group row">
                 <button type="button" class="btn btn-success" id="more-image">More images</button>
              </div>
              
 
 
-            <?php
-            echo $this->Form->hidden('review_number', ['name'=>'review_number', 'value'=> 0]);
-            echo $this->Form->hidden('review', ['name'=>'review', 'value'=> 0]);
-            ?>
+     
     </fieldset>
     <?= $this->Form->button(__('Lưu'), ['class'=>'btn btn-primary']) ?>
     <?= $this->Form->end() ?>

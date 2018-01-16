@@ -12,6 +12,10 @@ $(document).ready(function() {
     	var le =parseInt($('.more-image').children().length) + 1;
     	$('.more-image').append('<div class="col-md-3"><input type="file" id="input-file-now" class="dropify" name="product_image_'+le+'"/><button class="btn btn-danger delete_image">Delete this image</button></div>');
     });
+
+    //  $('.edit-image #more-image').click(function(event) {
+    //     $('.more-image').append('<div class="col-md-3"><input type="file" id="input-file-now" class="dropify" name="product_image"/><button class="btn btn-danger delete_image">Delete this image</button></div>');
+    // });
     $(document).on('click', '.delete_image', function(event) {
     	event.preventDefault();
     	$(this).parent().remove();
@@ -31,20 +35,25 @@ $(document).ready(function() {
     	parent.find('img').show();
     	parent.find('input[type=file]').hide();
     });
-                 $('.datepicker').datepicker({
-                    format: 'yyyy-mm-dd',
-                 });
-                $(document).on('change', '.product-img input[type=file]', function(event) {
-                    event.preventDefault();
-                    var parent = $(this).parent();
+     $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+     });
+    $(document).on('change', '.product-img input[type=file]', function(event) {
+        event.preventDefault();
+        var parent = $(this).parent();
 
-                    // cut
-                    var link = $(this).val().split("\\").pop();
-                    parent.find('input[type=hidden]').val(link);
-                    console.log(link);
-                    /* Act on the event */
-                });
-                // ajax delete image
+        // cut
+        var link = $(this).val().split("\\").pop();
+        parent.find('input[type=hidden]').val(link);
+        console.log(link);
+        /* Act on the event */
+    });
+    $('.save-product').click(function(){
+           // ajax update image
+
+    });
+
+             
 
 
 

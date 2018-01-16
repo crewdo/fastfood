@@ -13,9 +13,9 @@
         <thead>
             <tr>
                 <th scope="col" text-algin="center">ID</th>
+                <th scope="col">Tên món ăn</th>
                 <th scope="col">Loại</th>
                 <th scope="col">Trạng thái</th>
-                <th scope="col">Tên món ăn</th>
                  <th scope="col">Đơn vị</th>
                 <th scope="col">Giá bán</th>              
                 <th scope="col">Giảm giá</th>
@@ -31,9 +31,10 @@
                              array('class'=>'','id'=>'', 'escape' => false)
                             ) ?>
                         </td>
+                        <td><?= h($product->name) ?></td>
                 <td><?= $product->has('product_category') ? $this->Html->link($product->product_category->name, ['controller' => 'ProductCategories', 'action' => 'edit', $product->product_category->id]) : '' ?></td>
                 <td><?= $product->status ? 'Còn' : 'Hết'; ?></td>
-                <td><?= h($product->name) ?></td>
+              
                 <td><?= $product->has('product_unit') ? $this->Html->link($product->product_unit->name, ['controller' => 'ProductUnits', 'action' => 'view', $product->product_unit->id]) : '' ?></td>
 
                 <td><?= $this->Number->format($product->price) ?></td>

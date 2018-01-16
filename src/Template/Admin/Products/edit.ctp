@@ -107,12 +107,12 @@
               <?php $count = 0;
               foreach ($productImages as $value) {
                 if($value->feature == 1){
-                   echo '<div class="product-img"> <img src="'.$value->link.'" class="img-responsive" style="width:150px" id="fearure-image"><input type="file" class="hide" name="main_image"><button class="btn btn-warning">Change image</button></div><input type="hidden" name="feature_image" value="'.$value->link.'">';
+                   echo '<div class="product-img"> <img src="'.$value->link.'" class="img-responsive" style="width:150px" id="fearure-image"><input type="file" class="hide" name="'.$value->id.'"><button class="btn btn-warning">Change image</button></div>';
   
                 }
                 else {
-                  $count ++;
-                     echo '<div class="product-img"> <img src="'.$value->link.'" class="img-responsive" style="width:150px"><input type="file" class="hide" name="p-image_'.$count.'"><button class="btn btn-warning">Change image</button></div> <input type="hidden" name="n-image_'.$count.'" value="'.$value->link.'">';
+
+                     echo '<div class="product-img"> <img src="'.$value->link.'" class="img-responsive" style="width:150px"><input type="file" class="hide" name="'.$value->id.'"><button class="btn btn-warning">Change image</button></div>';
                 }
   
               } ?>
@@ -134,7 +134,7 @@
               </div>
 
     </fieldset>
-       <?= $this->Form->button(__('Lưu'), ['class'=>'btn btn-primary']) ?>
+       <?= $this->Form->button(__('Lưu'), ['class'=>'btn btn-primary save-product']) ?>
     <?= $this->Form->end() ?>
   </div>
 </div>

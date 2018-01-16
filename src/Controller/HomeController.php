@@ -29,17 +29,13 @@ class HomeController extends AppController
      */
     public function index()
     {
-        $this->viewBuilder()->layout('public/public');
+       
         $this->loadModel('Products');
-        $this->loadModel('ProductImages');
         $this->loadModel('Informations');
         $this->loadModel('FootBanners');
         $this->loadModel('HeadBanners');
-        $this->loadModel('ProductCategories');
-         $this->loadModel('OrderDetails');
-        // $products = $this->Products->find()->contain(['ProductImages']);
-        $categories = $this->ProductCategories->find();
-        $categories2 = $this->ProductCategories->find();
+        $this->loadModel('OrderDetails');
+        $this->loadModel('ProductImages');
         $head_banner = $this->HeadBanners->find();
         $products = $this->Products->find();
         $foot_banner = $this->FootBanners->find();
@@ -51,15 +47,9 @@ class HomeController extends AppController
         $products_images = $this->ProductImages->find()->where(['ProductImages.feature =' => 1]);
 
         //Ban chay Products
-       
-        // $good_products  = $this->OrderDetails->find('all', array(
-        //         'fields'=>'COUNT(*)', 
-        //         'group'=>'OrderDetails.product_id'
-        //         ));
 
         $good_products = $this->OrderDetails->find('all');
-
-        $good_products->select([ 
+                  $good_products->select([ 
                           'product_id',
                           'Products.name',
                           'Products.price',
@@ -70,12 +60,12 @@ class HomeController extends AppController
 
                  ->order(['count'=> 'DESC'])
                  ->limit(8);
-
         //Load Discount Categories
         $id_discounts = $this->Products->find()->select(['category_id'])->where(['discount >' => 0 ]);
 
-        $this->set(['head_banner' => $head_banner,'foot_banner' => $foot_banner, 'products' => $products, 'infomations' => $informations, 'categories' => $categories, 'categories2' => $categories2, 'id_discounts' => $id_discounts, 'new_products' => $new_products, 'products_images' =>  $products_images, 'good_products'=>$good_products ]);
+        $this->set(['head_banner' => $head_banner,'foot_banner' => $foot_banner, 'products' => $products, 'informations' => $informations, 'id_discounts' => $id_discounts, 'new_products' => $new_products, 'products_images' =>  $products_images, 'good_products'=>$good_products ]);
     }
+
         public function loginGoogle()
     {         
         $this->viewBuilder()->layout('');
@@ -105,73 +95,72 @@ class HomeController extends AppController
              $this->Customers->save($customer);
              $_SESSION['id'] = $customer->id;
         }
-
         else{
            $_SESSION['id'] = $account->id;
         }
            $_SESSION['name'] = $ggname;
            $_SESSION['email'] = $str;
            $_SESSION['img'] = $img;
-
            // $session->write('user.name', $ggname);
            // $session->write('user.email', $str);
            // $session->write('user.img',$img);
            // $session->write('user.token',$token);
-
        // }
 
-           // var_dump($googleUserData);
 // }
 }
 
-        public function register()
+        public function products()
     {
-        $this->viewBuilder()->layout('public/public');
+        $this->loadModel('Products');
+        $products = $this->Products->find();
+        $this->set(['products' => $products]);
     }
-    public function contact()
+        public function contact()
     {
-        $this->loadModel('Infomations');
-        $this->viewBuilder()->layout('public/public');
-        $infomations = $this->Infomations->find();
-        $this->set(['infomations' => $infomations]);
+        $this->loadModel('informations');
+        $informations = $this->informations->find();
+        $this->set(['informations' => $informations]);
     }
 
-     public function about()
+        public function about()
     {
-        $this->loadModel('Infomations');
-        $this->viewBuilder()->layout('public/public');
-        $infomations = $this->Infomations->find();
-        $this->set(['infomations' => $infomations]);
+        $this->loadModel('informations');
+        $informations = $this->informations->find();
+        $this->set(['informations' => $informations]);
     }
+
+
          public function showProduct($id = null)
     {
         $this->loadModel('Products');
-        $this->loadModel('ProductImages');
-           $this->loadModel('ProductCategories');
-        $this->viewBuilder()->layout('public/public');
-        $categories = $this->ProductCategories->find();
-        $categories2 = $this->ProductCategories->find();
+         $this->loadModel('ProductImages');
         $product = $this->Products->get($id);
-        $this->set(['product' => $product, 'categories' => $categories, 'categories2' => $categories2]);
+
+        // RELATED PRODUCT
+        $related_product = $this->Products->find()->where(['Products.category_id' => $product->category_id])->limit(4);
+        $single_images = $this->ProductImages->find()->where(['product_id' => $product->id ])->all();
+        // FEATURE
+        $products_images = $this->ProductImages->find()->where(['ProductImages.feature =' => 1]);
+
+        $this->set(['product' => $product, 'relateds'=>$related_product, 'products_images' => $products_images, 'single_images' => $single_images]);
     }
-     public function products()
+
+
+      public function checkOut()
     {
-        $this->loadModel('Infomations');
-        $this->viewBuilder()->layout('public/public');
-        $infomations = $this->Infomations->find();
-        $this->set(['infomations' => $infomations]);
-    }
-public function checkOut()
-    {
-        $this->loadModel('Infomations');
-        $this->viewBuilder()->layout('public/public');
-        $infomations = $this->Infomations->find();
-        $this->set(['infomations' => $infomations]);
+        $this->loadModel('informations');
+        $informations = $this->informations->find();
+        $this->set(['informations' => $informations]);
     }
     public function cart()
     {
-        $this->viewBuilder()->layout('public/public');
+        $this->loadModel('Products');
+        $products = $this->Products->find();
+        $this->set(['products' => $products]);
     }
+        // add to cart
+    
     public function logout(){
         session_destroy();
           return $this->redirect(['action' => 'index']);
@@ -185,6 +174,7 @@ public function checkOut()
         // {
         // $this->Auth->Allow(['logout']);
         // }
+        $this->viewBuilder()->layout('public/public');
         return parent::beforeFilter($event);
 
 

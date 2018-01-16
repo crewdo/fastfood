@@ -9,10 +9,10 @@
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
 					<h3>Phổ Biến</h3>
 					<ul>
-						<li><a href="about.html">Thông Tin</a></li>
-						<li><a href="products.html">Sản phẩm</a></li>
-						<li><a href="contact.html">Liên Hệ </a></li>	
-						<li><a href="checkout.html">Giỏ Hàng</a></li>
+						<li><a href="/about">Thông Tin</a></li>
+						<li><a href="/products">Sản phẩm</a></li>
+						<li><a href="/contact">Liên Hệ </a></li>	
+						<li><a href="cart">Giỏ Hàng</a></li>
 					</ul>
 				</div>
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".9s">

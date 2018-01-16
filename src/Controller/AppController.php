@@ -82,6 +82,14 @@ class AppController extends Controller
         ) {
             $this->set('_serialize', true);
         }
+
+            $this->loadModel('ProductCategories');
+            $this->loadModel('Informations');
+            $categories = $this->ProductCategories->find();
+            $information = $this->Informations->find()->first();
+            $categories2 =$this->ProductCategories->find();
+            $this->set(['categories' => $categories, 'categories2' => $categories2, 'information' => $information]);
+
     }
 
 }

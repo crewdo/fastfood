@@ -13,7 +13,6 @@ class FunctionsComponent extends Component
   public function  uploadImage($image, $path = 'img'){
         $result = [
             'status' => 'fail',
-            'link' => '',
             'message' =>''
         ];
      if (!empty($image["name"])) {

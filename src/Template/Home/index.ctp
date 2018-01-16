@@ -1,4 +1,71 @@
+    <link href="/public/css/flexslider.css" rel="stylesheet" type="text/css" media="all" />
+    <div class="banner">
+        <div class="container">
+            <div class="banner-text">           
+                <div class="col-sm-5 banner-left wow fadeInLeft animated" data-wow-delay=".5s">
+                    <h2>Ăn uống thả ga với Ngày FastFoody</h2>
+                    <h3>Sắp tới</h3>
+                    <h4>Món mới Quá Đã</h4>
+                    <div class="count main-row">
+                        <ul id="example">
+                            <li><span class="hours">00</span><p class="hours_text">Giờ</p></li>
+                            <li><span class="minutes">00</span><p class="minutes_text">Phút</p></li>
+                            <li><span class="seconds">00</span><p class="seconds_text">Giây</p></li>
+                        </ul>
+                            <div class="clearfix"> </div>
 
+                    <script src="public/js/jquery.countdown.min.js" type="text/javascript" charset="utf-8" ></script>
+                            <script type="text/javascript">
+                                $('#example').countdown({
+                                    date: '12/24/2020 15:59:59',
+                                    offset: -8,
+                                    day: 'Day',
+                                    days: 'Days'
+                                }, function () {
+                                    alert('Done!');
+                                });
+                            </script>
+                    </div>
+
+                </div>
+                <div class="col-sm-7 banner-right wow fadeInRight animated" data-wow-delay=".5s">   <div class="intro-banner">Món ăn hot hôm nay!</div>     
+                    <section class="slider grid">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                <li>
+                                    <h4>-30%</h4>
+                                    <img src="public/images/b1.png" alt="">
+                                </li>
+                                <li>
+                                    <h4>-25%</h4>
+                                    <img src="public/images/b3.png" alt="">
+                                </li>
+                                <li>
+                                    <h4>-32%</h4>
+                                    <img src="public/images/b2.png" alt="">
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+               
+                
+                        <script src="public/js/jquery.flexslider.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                        $(window).load(function(){
+                          $('.flexslider').flexslider({
+                            animation: "pagination",
+                            start: function(slider){
+                              $('body').removeClass('loading');
+                            }
+                          });
+                        });
+                    </script>
+                    <!--End-slider-script-->
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>  
  <div class="new">
         <div class="container">
             <div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
@@ -13,7 +80,7 @@
           
                 <div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" data-wow-delay=".5s" style="margin-left: 5px">
                     <div class="new-top">
-                        <a href="/home/showProduct/<?php echo $pro->id ?>"><img src="/img/products/<?php  foreach ($products_images as $img)
+                        <a href="/home/showProduct/<?php echo $pro->id ?>"><img src="<?php  foreach ($products_images as $img)
                         {
                             if($img->product_id == $pro->id)
                             {
@@ -23,9 +90,10 @@
                             ?>" class="img-responsive" alt=""/></a>
                         <div class="new-text">
                             <ul>
-                                <li><a class="item_add" href=""> Thêm vào Giỏ</a></li>
-                                <li><a href="#">Xem Nhanh </a></li>
-                                <li><a href="/home/showProduct/<?php echo $pro->id ?>">Chi Tiết </a></li>
+                            <li><a href="/home/showProduct/<?php echo $pro->id ?>">Xem Nhanh </a></li>
+								<li><input type="number" class="item_quantity" min="1" value="1"></li>
+								<li><a class="item_add" href="">Thêm Vào Giỏ</a></li>
+
                             </ul>
                         </div>
                     </div>
@@ -67,7 +135,7 @@
                 {
                 ?>
                 <div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay=".5s" style="margin-right: 5px;">
-                    <a href="/home/showProduct/<?php echo $good->product_id ?>"><img src="/img/products/<?php  foreach ($products_images as $img)
+                    <a href="/home/showProduct/<?php echo $good->product_id ?>"><img src="<?php  foreach ($products_images as $img)
                         {
                             if($img->product_id == $good->product_id)
                             {
